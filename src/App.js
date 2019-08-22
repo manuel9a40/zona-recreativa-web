@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Navigation from './components/Navigation.js'
+import Navigation from './components/Navigation.jsx'
 
 function App() {
     return (<div className="App">
