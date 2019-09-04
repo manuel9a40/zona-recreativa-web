@@ -17,3 +17,4 @@ You will also see any lint errors in the console.
 Run the following commands:
 
 `npm install react-bootstrap bootstrap`
+`npm install --save next-images`
