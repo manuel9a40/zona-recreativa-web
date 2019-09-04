@@ -14869,7 +14869,7 @@ function (_Component) {
         },
         __self: this
       }, __jsx("a", {
-        className: "nav-link px-lg-4 px-xl-4 px-sm-0 mx-md-2 d-none d-sm-none",
+        className: "nav-link px-lg-4 px-xl-4 px-sm-0 mx-md-2 d-sm-none",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 24
@@ -14941,7 +14941,7 @@ function (_Component) {
         },
         __self: this
       }))), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        className: "pr-xl-5 pr-lg-4 pr-md-2 pl-sm-3 pl-4 col-xs-2",
+        className: "pr-xl-5 pr-lg-4 pr-md-2 pr-sm-3 pr-2",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 61

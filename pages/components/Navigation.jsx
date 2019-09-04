@@ -21,7 +21,7 @@ class Navigation extends Component {
                 }
                 <Nav className="pl-xl-5 pl-lg-4 pl-md-2 pl-sm-3 pl-4 col-xs-2">
                     <Link href="">
-                        <a className="nav-link px-lg-4 px-xl-4 px-sm-0 mx-md-2 d-none d-sm-none">
+                        <a className="nav-link px-lg-4 px-xl-4 px-sm-0 mx-md-2 d-sm-none">
                             Inicio
                         </a>
                     </Link>
@@ -58,7 +58,7 @@ class Navigation extends Component {
 
                  */
                 }
-                <Nav className="pr-xl-5 pr-lg-4 pr-md-2 pl-sm-3 pl-4 col-xs-2">
+                <Nav className="pr-xl-5 pr-lg-4 pr-md-2 pr-sm-3 pr-2">
                     <Link href="">
                         <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
                             Proveedores
