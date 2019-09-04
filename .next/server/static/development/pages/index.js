@@ -832,14 +832,14 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       variant: "light",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 13
       },
       __self: this
     }, __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1___default.a.Toggle, {
       "aria-controls": "responsive-navbar-nav",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 12
+        lineNumber: 14
       },
       __self: this
     }), __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1___default.a.Collapse, {
@@ -847,84 +847,84 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       id: "responsive-navbar-nav",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 15
       },
       __self: this
     }, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_2___default.a, {
       className: "pl-xl-5 pl-lg-4 pl-md-2 pl-sm-3 pl-4 col-xs-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 22
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 23
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-0 mx-md-2 d-none d-sm-none",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 24
       },
       __self: this
     }, "Inicio")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 28
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 29
       },
       __self: this
     }, "Cat\xE1logo")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 33
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32
+        lineNumber: 34
       },
       __self: this
     }, "Galer\xEDa")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 38
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 39
       },
       __self: this
     }, "Informaci\xF3n"))), __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1___default.a.Brand, {
       className: "d-none d-md-block col-xs-1 col-md-1",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 50
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "/",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 51
       },
       __self: this
     }, __jsx(react_bootstrap_Image__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -933,42 +933,42 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       fluid: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 52
       },
       __self: this
     }))), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_2___default.a, {
       className: "pr-xl-5 pr-lg-4 pr-md-2 pl-sm-3 pl-4 col-xs-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 61
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 60
+        lineNumber: 62
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 63
       },
       __self: this
     }, "Proveedores")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
       href: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 67
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 68
       },
       __self: this
     }, "Contacto")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -976,14 +976,14 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       href: "/about",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 72
       },
       __self: this
     }, __jsx("a", {
       className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 73
       },
       __self: this
     }, "Acerca de")))), __jsx("link", {
@@ -993,7 +993,7 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       crossOrigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 79
+        lineNumber: 81
       },
       __self: this
     }));
