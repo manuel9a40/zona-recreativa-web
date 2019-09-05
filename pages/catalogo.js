@@ -1,10 +1,8 @@
 import Navigation from './components/Navigation'
 import CardElement from './components/CardElement'
 import Layout from './components/GeneralLayout'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
-function multPrint (times)
+function multPrint ()
 {
     var cards = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"];
     return cards.map(card => (
@@ -18,8 +16,8 @@ export default function catalogo ()
         <div>
             <Navigation />
             <Layout>
-                <div className="row col-10 mx-5">
-                    {cards}
+                <div className="row col-12">
+                    {multPrint()}
 
                 </div>
             </Layout>

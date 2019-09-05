@@ -1,5 +1,8 @@
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+
 const CardElement = (props) => (
-    <Card className="" style={{
+    <Card className="m-3" style={{
             width: '18rem'
         }}>
         <Card.Img variant="top" src="holder.js/100px180"/>

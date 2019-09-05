@@ -1,12 +1,9 @@
-const layoutStyle = {
-  margin: 40,
-  padding: 40
-};
+import Container from 'react-bootstrap/Container'
 
 const Layout = props => (
-  <div className="container" style={layoutStyle}>
+  <Container fluid="true">
     {props.children}
-  </div>
+    </Container>
 );
 
 export default Layout;
