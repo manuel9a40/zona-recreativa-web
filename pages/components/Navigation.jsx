@@ -25,7 +25,7 @@ class Navigation extends Component {
                             Inicio
                         </a>
                     </Link>
-                    <Link href="">
+                    <Link href="/catalogo">
                         <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
                             Catálogo
                         </a>
