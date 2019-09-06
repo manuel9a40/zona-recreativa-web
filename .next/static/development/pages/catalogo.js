@@ -6844,10 +6844,10 @@ exports.SUPPORTS_PERFORMANCE_USER_TIMING = exports.SUPPORTS_PERFORMANCE && typeo
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
-  \*********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
+  \************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14037,7 +14037,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navigation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Navigation */ "./pages/components/Navigation.jsx");
 /* harmony import */ var _components_CardElement__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/CardElement */ "./pages/components/CardElement.js");
 /* harmony import */ var _components_GeneralLayout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/GeneralLayout */ "./pages/components/GeneralLayout.js");
-var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/catalogo.js";
+var _jsxFileName = "/home/nano/Documents/AP/zona-recreativa-web/pages/catalogo.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -14050,6 +14050,7 @@ function multPrint() {
     return __jsx(_components_CardElement__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: card,
       title: card,
+      msg: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula.",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 9
@@ -14079,7 +14080,7 @@ function catalogo() {
     },
     __self: this
   }, __jsx("div", {
-    className: "row p-4 justify-content-center",
+    className: "row justify-content-center",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19
@@ -14105,52 +14106,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/Button.js");
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
-var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/CardElement.js";
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+var _jsxFileName = "/home/nano/Documents/AP/zona-recreativa-web/pages/components/CardElement.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 function sayHello(msg) {
-  alert(msg);
+  console.log(msg);
 }
 
 var CardElement = function CardElement(props) {
   return __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "m-3 col-5",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 9
-    },
-    __self: this
-  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Img, {
-    className: "border border-secondary mt-3",
-    variant: "top",
-    src: __webpack_require__(/*! ../resources/logo.png */ "./pages/resources/logo.png"),
+    className: "m-3 m-lg-4 m-xl-2 col-xl-3 col-lg-4 col-md-5 col-sm-5 col-10",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 10
     },
     __self: this
-  }), __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Body, {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/p/[id]",
+    as: "/p/".concat(props.title),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
     },
     __self: this
-  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Title, {
+  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Img, {
+    className: "border border-secondary p-3 mt-3",
+    variant: "top",
+    src: __webpack_require__(/*! ../resources/logo.png */ "./pages/resources/logo.png"),
+    style: {
+      cursor: 'pointer'
+    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
     },
     __self: this
+  })), __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Body, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 14
+    },
+    __self: this
+  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
   }, props.title), __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_1___default.a.Text, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 16
     },
     __self: this
-  }, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  }, props.msg.length > 6 ? props.msg.substring(0, 128) + ' [...]' : props.msg), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
+    href: "/p/[id]",
+    as: "/p/".concat(props.title),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: this
+  }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
     onClick: function onClick() {
       return sayHello(props.title);
     },
@@ -14158,10 +14181,10 @@ var CardElement = function CardElement(props) {
     variant: "dark",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 20
     },
     __self: this
-  }, "Ver m\xE1s")));
+  }, "Ver m\xE1s"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CardElement);
@@ -14181,14 +14204,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/Container.js");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/GeneralLayout.js";
+var _jsxFileName = "/home/nano/Documents/AP/zona-recreativa-web/pages/components/GeneralLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // Layout general de las pantallas
 
 var Layout = function Layout(props) {
   return __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "justify-content-center col-8",
+    className: "justify-content-center pt-4 col-9 col-md-10 col-lg-11 col-xl-10",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
@@ -14234,7 +14257,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Navigation.jsx";
+var _jsxFileName = "/home/nano/Documents/AP/zona-recreativa-web/pages/components/Navigation.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
 // npm install react-bootstrap bootstrap
 
@@ -14452,13 +14475,13 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 /***/ }),
 
 /***/ 2:
-/*!*************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
-  \*************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./");
 
 
 /***/ }),

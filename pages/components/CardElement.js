@@ -1,19 +1,26 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import Link from 'next/link'
 
 function sayHello(msg) {
-    alert(msg);
+    console.log(msg);
   }
 
 const CardElement = (props) => (
-    <Card className="m-3 col-5">
-        <Card.Img className="border border-secondary mt-3" variant="top" src={require('../resources/logo.png')} />
+    <Card className="m-3 m-lg-4 m-xl-2 col-xl-3 col-lg-4 col-md-5 col-sm-5 col-10">
+        <Link href="/p/[id]" as={`/p/${props.title}`}>
+            <Card.Img className="border border-secondary p-3 mt-3" variant="top" src={require('../resources/logo.png')} style={ {cursor:'pointer' }} />
+        </Link>
         <Card.Body>
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula.
+                {(props.msg.length>6)? props.msg.substring(0, 128)+' [...]':(props.msg)}
             </Card.Text>
-            <Button onClick={() => sayHello(props.title)} className="btn-sm float-right" variant="dark">Ver más</Button>
+                <Link href="/p/[id]" as={`/p/${props.title}`}>
+                    <Button onClick={() => sayHello(props.title)} className="btn-sm float-right" variant="dark">
+                        Ver más
+                    </Button>
+                </Link>
         </Card.Body>
     </Card>
 )
