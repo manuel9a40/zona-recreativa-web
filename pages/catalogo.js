@@ -6,7 +6,7 @@ function multPrint ()
 {
     var cards = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"];
     return cards.map(card => (
-        <CardElement title={card} />
+        <CardElement key={card} title={card} />
     ));
 }
 
@@ -16,7 +16,7 @@ export default function catalogo ()
         <div>
             <Navigation />
             <Layout>
-                <div className="row col-12">
+                <div className="row p-4 justify-content-center">
                     {multPrint()}
 
                 </div>

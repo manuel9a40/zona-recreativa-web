@@ -1,17 +1,19 @@
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
+function sayHello(msg) {
+    alert(msg);
+  }
+
 const CardElement = (props) => (
-    <Card className="m-3" style={{
-            width: '18rem'
-        }}>
-        <Card.Img variant="top" src="holder.js/100px180"/>
+    <Card className="m-3 col-5">
+        <Card.Img className="border border-secondary mt-3" variant="top" src={require('../resources/logo.png')} />
         <Card.Body>
             <Card.Title>{props.title}</Card.Title>
             <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula.
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button onClick={() => sayHello(props.title)} className="btn-sm float-right" variant="dark">Ver más</Button>
         </Card.Body>
     </Card>
 )
