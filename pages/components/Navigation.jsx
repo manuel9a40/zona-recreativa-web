@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 class Navigation extends Component {
     render() {
-        return (<Navbar className="shadow" collapseOnSelect="collapseOnSelect" expand="md" bg="light" variant="light">
+        return (<Navbar className="shadow sticky-top " collapseOnSelect="collapseOnSelect" expand="md" bg="light" variant="light">
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse className="justify-content-between" id="responsive-navbar-nav">
                 {/*

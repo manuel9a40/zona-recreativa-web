@@ -7,9 +7,16 @@ const Post = props => (
     <div>
         <Navigation />
         <Layout>
-            <h1 className="pt-4">Viaje A</h1>
+            <h1 className="pt-4">{props.id}</h1>
+            <p>asfasf</p>
         </Layout>
     </div>
 );
+
+Post.getInitialProps = async function(context) {
+  const { id } = context.query;
+
+  return { id };
+};
 
 export default Post;

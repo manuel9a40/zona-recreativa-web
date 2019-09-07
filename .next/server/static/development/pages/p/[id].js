@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -823,7 +823,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     return __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1___default.a, {
-      className: "shadow",
+      className: "shadow sticky-top ",
       collapseOnSelect: "collapseOnSelect",
       expand: "md",
       bg: "light",
@@ -1053,7 +1053,22 @@ const Post = props => __jsx("div", {
     lineNumber: 10
   },
   __self: undefined
-}, "Viaje A")));
+}, props.id), __jsx("p", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 11
+  },
+  __self: undefined
+}, "asfasf")));
+
+Post.getInitialProps = async function (context) {
+  const {
+    id
+  } = context.query;
+  return {
+    id
+  };
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Post);
 
@@ -1070,7 +1085,7 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!*******************************!*\
   !*** multi ./pages/p/[id].js ***!
   \*******************************/

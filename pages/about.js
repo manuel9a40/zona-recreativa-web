@@ -1,5 +1,5 @@
 import Navigation from './components/Navigation'
-import Layout from './components/MyLayout'
+import Layout from './components/GeneralLayout'
 
 export default function About() {
   return (

@@ -17,6 +17,9 @@ export default function catalogo ()
             <Navigation />
             <Layout>
                 <div className="row justify-content-center">
+                    <h1 className="my-2">Catálogo</h1>
+                </div>
+                <div className="row justify-content-center">
                     {multPrint()}
 
                 </div>
