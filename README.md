@@ -17,4 +17,15 @@ You will also see any lint errors in the console.
 Run the following commands:
 
 `npm install react-bootstrap bootstrap`
+
 `npm install --save next-images`
+
+`npm install --save @zeit/next-css`
+
+`npm i react-google-maps`
+
+## About
+
+Timeline based on a tutorial blog made by Florian Pop
+
+https://www.florin-pop.com/blog/2019/04/how-to-create-a-timeline-with-react/

@@ -6187,7 +6187,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/home/nano/Documents/AP/zona-recreativa-web/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/home/nano/Documents/AdmProyecto/zona-recreativa-web/.next");
       return error;
     }
   };
