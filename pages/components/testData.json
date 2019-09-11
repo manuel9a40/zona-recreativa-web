@@ -1,34 +1,46 @@
 [
     {
-        "text": "Wrote my first blog post ever on Medium",
-        "time": "11:30 am",
-        "category": {
-            "tag": "medium",
-            "color": "#018f69"
-        }
+        "text": "Salida",
+        "time": "08:30 am",
+        "duracion": "1 hora"
     },
     {
-        "text": "Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium Wrote my first blog post ever on medium Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium",
-        "time": "11:30 am",
-        "category": {
-            "tag": "medium",
-            "color": "#018f69"
-        }
+        "text": "Llegada e inicio del recorrido en el lugar A.",
+        "time": "9:30 am",
+        "duracion": "1 hora"
     },
     {
-        "text": "Wrote my first blog",
-        "time": "11:30 am",
-        "category": {
-            "tag": "medium",
-            "color": "#018f69"
-        }
+        "text": "Tiempo libre en el lugar A",
+        "time": "10:30 am",
+        "duracion": "30 minutos"
     },
     {
-        "text": "Wrote my first blog post ever on Medium",
-        "time": "11:30 am",
-        "category": {
-            "tag": "medium",
-            "color": "#018f69"
-        }
+        "text": "Salida del lugar A",
+        "time": "11:00 am",
+        "duracion": "1 hora"
+    },
+    {
+        "text": "Llegada y almuerzo en el lugar B.",
+        "time": "12:00 am",
+        "duracion": "1 hora"
+    },
+    {
+        "text": "Inicio del recorrido en el lugar B.",
+        "time": "1:00 pm",
+        "duracion": "2 horas"
+    },
+    {
+        "text": "Tiempo libre en el lugar B.",
+        "time": "3:00 pm",
+        "duracion": "45 minutos"
+    },
+    {
+        "text": "Salida del lugar B.",
+        "time": "3:45 pm",
+        "duracion": "1 hora y 30 minutos"
+    },
+    {
+        "text": "Fin del viaje.",
+        "time": "5:15 pm"
     }
 ]

@@ -17876,7 +17876,7 @@ var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/c
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-function getTime(time) {
+function validate(time) {
   if (typeof time !== 'undefined') return time;else return '';
 }
 
@@ -17896,31 +17896,39 @@ var TimelineItem = function TimelineItem(_ref) {
       lineNumber: 14
     },
     __self: this
-  }, __jsx("h5", {
+  }, __jsx("h6", {
+    className: "row",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15
     },
     __self: this
   }, __jsx("time", {
-    className: "badge badge-pill badge-success",
+    className: "badge badge-pill ml-2 badge-success col-auto",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
     },
     __self: this
-  }, getTime(data.time))), __jsx("p", {
-    className: "mb-1",
+  }, validate(validate(data).time)), __jsx("span", {
+    className: "tag col-auto mt-md-0 mt-2 ml-md-auto",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 19
     },
     __self: this
-  }, data.text), __jsx("span", {
+  }, "Duración: " + validate(validate(data).duracion), " //validate(data) may return '' and remove text if duracion is null")), __jsx("p", {
+    className: "mb-1 ml-0",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    },
+    __self: this
+  }, validate(validate(data).text)), __jsx("span", {
     className: "circle",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 27
     },
     __self: this
   })));
@@ -17934,10 +17942,10 @@ var TimelineItem = function TimelineItem(_ref) {
 /*!****************************************!*\
   !*** ./pages/components/testData.json ***!
   \****************************************/
-/*! exports provided: 0, 1, 2, 3, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"text\":\"Wrote my first blog post ever on Medium\",\"time\":\"11:30 am\",\"category\":{\"tag\":\"medium\",\"color\":\"#018f69\"}},{\"text\":\"Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium Wrote my first blog post ever on medium Wrote my first blog post ever on Medium Wrote my first blog post ever on Medium\",\"time\":\"11:30 am\",\"category\":{\"tag\":\"medium\",\"color\":\"#018f69\"}},{\"text\":\"Wrote my first blog\",\"time\":\"11:30 am\",\"category\":{\"tag\":\"medium\",\"color\":\"#018f69\"}},{\"text\":\"Wrote my first blog post ever on Medium\",\"time\":\"11:30 am\",\"category\":{\"tag\":\"medium\",\"color\":\"#018f69\"}}]");
+module.exports = JSON.parse("[{\"text\":\"Salida\",\"time\":\"08:30 am\",\"duracion\":\"1 hora\"},{\"text\":\"Llegada e inicio del recorrido en el lugar A.\",\"time\":\"9:30 am\",\"duracion\":\"1 hora\"},{\"text\":\"Tiempo libre en el lugar A\",\"time\":\"10:30 am\",\"duracion\":\"30 minutos\"},{\"text\":\"Salida del lugar A\",\"time\":\"11:00 am\",\"duracion\":\"1 hora\"},{\"text\":\"Llegada y almuerzo en el lugar B.\",\"time\":\"12:00 am\",\"duracion\":\"1 hora\"},{\"text\":\"Inicio del recorrido en el lugar B.\",\"time\":\"1:00 pm\",\"duracion\":\"2 horas\"},{\"text\":\"Tiempo libre en el lugar B.\",\"time\":\"3:00 pm\",\"duracion\":\"45 minutos\"},{\"text\":\"Salida del lugar B.\",\"time\":\"3:45 pm\",\"duracion\":\"1 hora y 30 minutos\"},{\"text\":\"Fin del viaje.\",\"time\":\"5:15 pm\"}]");
 
 /***/ }),
 
@@ -18002,7 +18010,7 @@ var Post = function Post(props) {
     },
     __self: this
   }, props.infoPkg), __jsx("div", {
-    className: "container mb-5 pt-sm-auto pt-4",
+    className: "container mb-5 pt-sm-auto ",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
@@ -18016,7 +18024,7 @@ var Post = function Post(props) {
     },
     __self: this
   }, __jsx("div", {
-    className: "container col-md-6 col-sm-12 pr-4",
+    className: "container col-md-6 col-sm-12 pr-4 mt-md-3 mt-1",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -18052,7 +18060,7 @@ var Post = function Post(props) {
     },
     __self: this
   })), __jsx("div", {
-    className: "col-md-6 col-sm-12 pl-4",
+    className: "col-md-6 col-sm-12 pl-sm-4 pl-0 mt-3",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 28
@@ -18129,7 +18137,7 @@ module.exports = "/_next/static/images/map-3b067279b1abbdccace96fe4be818d73.jpg"
 
 /***/ }),
 
-/***/ 2:
+/***/ 3:
 /*!*******************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fp%2F%5BinfoPkg%5D&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fp%2F%5BinfoPkg%5D.js ***!
   \*******************************************************************************************************************************************************************************/
@@ -18152,5 +18160,5 @@ module.exports = dll_129a35c7ec57967eb265;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[3,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=[infoPkg].js.map

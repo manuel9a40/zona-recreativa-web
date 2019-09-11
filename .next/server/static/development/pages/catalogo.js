@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1097,9 +1097,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _timeline_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../timeline-style.css */ "./timeline-style.css");
+/* harmony import */ var _timeline_style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_timeline_style_css__WEBPACK_IMPORTED_MODULE_4__);
 var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Package.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -1118,21 +1121,21 @@ const Package = props => __jsx("div", {
   className: "card mb-3 col-lg-8 col-12 mx-auto",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 19
+    lineNumber: 20
   },
   __self: undefined
 }, __jsx("div", {
   className: "row no-gutters",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 20
+    lineNumber: 21
   },
   __self: undefined
 }, __jsx("div", {
   className: "m-2 my-md-auto mx-auto mb-3 col-md-4 col-8",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 21
+    lineNumber: 22
   },
   __self: undefined
 }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -1140,7 +1143,7 @@ const Package = props => __jsx("div", {
   as: `/p/${props.title}`,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 22
+    lineNumber: 23
   },
   __self: undefined
 }, __jsx("img", {
@@ -1152,35 +1155,35 @@ const Package = props => __jsx("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 23
+    lineNumber: 24
   },
   __self: undefined
 }))), __jsx("div", {
   className: "col-md-8 col-10",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 26
+    lineNumber: 27
   },
   __self: undefined
 }, __jsx("div", {
   className: "card-body p-3",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 27
+    lineNumber: 28
   },
   __self: undefined
 }, __jsx("h5", {
   className: "card-title",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 28
+    lineNumber: 29
   },
   __self: undefined
 }, props.title), __jsx("p", {
   className: "card-text",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 31
+    lineNumber: 32
   },
   __self: undefined
 }, cutMsg(props.msg)), __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -1188,7 +1191,7 @@ const Package = props => __jsx("div", {
   as: `/p/${props.title}`,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 34
+    lineNumber: 35
   },
   __self: undefined
 }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -1197,7 +1200,7 @@ const Package = props => __jsx("div", {
   variant: "dark",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 35
+    lineNumber: 36
   },
   __self: undefined
 }, "Ver m\xE1s"))))));
@@ -1217,7 +1220,18 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 
 /***/ }),
 
-/***/ 3:
+/***/ "./timeline-style.css":
+/*!****************************!*\
+  !*** ./timeline-style.css ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
+/***/ 5:
 /*!*********************************!*\
   !*** multi ./pages/catalogo.js ***!
   \*********************************/

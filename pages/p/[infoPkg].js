@@ -11,9 +11,9 @@ const Post = props => (
         <Navigation />
         <Layout>
             <h1 className="pt-4 text-center mb-4">{props.infoPkg}</h1>
-            <div className="container mb-5 pt-sm-auto pt-4">
+            <div className="container mb-5 pt-sm-auto ">
                 <div className="row">
-                    <div className="container col-md-6 col-sm-12 pr-4">
+                    <div className="container col-md-6 col-sm-12 pr-4 mt-md-3 mt-1">
                         <h3 className="row mb-3">
                             Descripción
                         </h3>
@@ -25,7 +25,7 @@ const Post = props => (
                         </h3>
                         <img src={require('../resources/map.jpg')} className="col-12 p-0"/>
                     </div>
-                    <div className="col-md-6 col-sm-12 pl-4">
+                    <div className="col-md-6 col-sm-12 pl-sm-4 pl-0 mt-3">
                         <h3 className="mb-3">
                             Itinerario
                         </h3>

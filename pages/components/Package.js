@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
+import '../../timeline-style.css'
 
 
 function sayHello(msg) {
