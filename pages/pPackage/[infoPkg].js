@@ -49,6 +49,7 @@ Post.getInitialProps = async function(context) {
   // return { infoPkg };
 
     var errorCode = false;
+    console.log(infoPkg)
 
     for (var i = 0; i < data.length; i++) {
         if (typeof data[i].id !== 'undefined' && data[i].id == infoPkg)
