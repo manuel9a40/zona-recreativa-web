@@ -4,7 +4,7 @@ import Package from './components/Package';
 
 function multPrint ()
 {
-    var cards = ["Card 1", "Card 2", "Card 3", "Card 4", "Card 5"];
+    var cards = ["card1", "card2", "Card 3", "Card 4", "Card 5"];
     return cards.map(card => (
         <Package key={card} title={card} msg="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula." />
     ));
