@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -776,7 +776,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Navigation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Navigation */ "./pages/components/Navigation.jsx");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "A:\\GIT_ROOT\\zona-recreativa-web\\pages\\adminMain.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/adminMain.js";
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -794,7 +794,7 @@ const mpOnClick = () => next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push(
 
 const msOnClick = () => next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/adminPersonalM');
 
-const tOnClick = () => next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/adminTrans'); //
+const tOnClick = () => next_router__WEBPACK_IMPORTED_MODULE_4___default.a.push('/adminTran'); //
 
 
 function adminMain() {
@@ -830,68 +830,68 @@ function adminMain() {
       lineNumber: 26
     },
     __self: this
-  }, "Administrador"))), __jsx("div", {
+  }, "Administrador")), __jsx("div", {
     style: {
       textAlign: 'center'
     },
-    className: "jsx-924353260" + " " + "btn-group-admin",
+    className: "jsx-924353260" + " " + "btn-group-admin col-8 mx-auto",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, __jsx("button", {
+    onClick: packagesOnClick,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 31
     },
     __self: this
-  }, __jsx("button", {
-    onClick: packagesOnClick,
-    className: "jsx-924353260",
+  }, "Administrar paquetes"), __jsx("button", {
+    onClick: slOnClick,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 32
     },
     __self: this
-  }, "Administrar paquetes"), __jsx("button", {
-    onClick: slOnClick,
-    className: "jsx-924353260",
+  }, "Administrar seguros laborales"), __jsx("button", {
+    onClick: mpOnClick,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 33
     },
     __self: this
-  }, "Administrar seguros laborales"), __jsx("button", {
-    onClick: mpOnClick,
-    className: "jsx-924353260",
+  }, "Administrar planes alimenticios"), __jsx("button", {
+    onClick: msOnClick,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 34
     },
     __self: this
-  }, "Administrar planes alimenticios"), __jsx("button", {
-    onClick: msOnClick,
-    className: "jsx-924353260",
+  }, "Administrar personal m\xE9dico"), __jsx("button", {
+    onClick: tOnClick,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 35
     },
     __self: this
-  }, "Administrar personal m\xE9dico"), __jsx("button", {
-    onClick: tOnClick,
-    className: "jsx-924353260",
+  }, "Administrar transporte"), __jsx("button", {
+    onClick: closeSession,
+    className: "jsx-924353260" + " " + "col-4",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 36
     },
     __self: this
-  }, "Administrar transporte"), __jsx("button", {
-    onClick: closeSession,
-    className: "jsx-924353260",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37
-    },
-    __self: this
   }, "Cerrar sesi\xF3n"), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "924353260",
     __self: this
-  }, ".btn-group-admin.jsx-924353260 button.jsx-924353260{width:50%;table-layout:fixed;border-collapse:collapse;position:relative;border:0.1em solid #FFFFFF;font-size:15px;background-color:black;color:white;padding:1em 2em;box-sizing:border-box;-webkit-text-decoration:none;text-decoration:none;margin-top:50px;text-align:center;-webkit-transition:all 0.2s;transition:all 0.2s;display:inline;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.btn-group-admin.jsx-924353260 button.jsx-924353260:hover{color:#000000;background-color:#42c8f5;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkE6XFxHSVRfUk9PVFxcem9uYS1yZWNyZWF0aXZhLXdlYlxccGFnZXNcXGFkbWluTWFpbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFzQzRCLEFBSStCLEFBbUJJLFVBbEJLLElBbUJNLGVBbEJBLFVBbUI3QixlQWxCc0Isa0JBQ1EsMkJBQ1gsZUFDUSx1QkFDWCxZQUNJLGdCQUNNLHNCQUNGLGtEQUNKLGdCQUNFLGtCQUNFLGdEQUNMLGVBQ0csNkZBQ3RCIiwiZmlsZSI6IkE6XFxHSVRfUk9PVFxcem9uYS1yZWNyZWF0aXZhLXdlYlxccGFnZXNcXGFkbWluTWFpbi5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBMYXlvdXQgZnJvbSAnLi9jb21wb25lbnRzL0dlbmVyYWxMYXlvdXQnO1xyXG5pbXBvcnQgTmF2aWdhdGlvbiBmcm9tICcuL2NvbXBvbmVudHMvTmF2aWdhdGlvbic7XHJcbmltcG9ydCBSb3V0ZXIgZnJvbSAnbmV4dC9yb3V0ZXInXHJcblxyXG5jb25zdCBjbG9zZVNlc3Npb24gPSAoKSA9PiBSb3V0ZXIucHVzaCgnLycpXHJcblxyXG5jb25zdCBwYWNrYWdlc09uQ2xpY2sgPSAoKSA9PiBSb3V0ZXIucHVzaCgnL2FkbWluUGFja2FnZXMnKVxyXG5cclxuY29uc3Qgc2xPbkNsaWNrID0gKCkgPT4gUm91dGVyLnB1c2goJy9hZG1pblNlZ3Vyb3MnKVxyXG5cclxuY29uc3QgbXBPbkNsaWNrID0gKCkgPT4gUm91dGVyLnB1c2goJy9hZG1pblBsYW5lc0EnKVxyXG5cclxuY29uc3QgbXNPbkNsaWNrID0gKCkgPT4gUm91dGVyLnB1c2goJy9hZG1pblBlcnNvbmFsTScpXHJcblxyXG5jb25zdCB0T25DbGljayA9ICgpID0+IFJvdXRlci5wdXNoKCcvYWRtaW5UcmFucycpXHJcblxyXG5cclxuLy9cclxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gYWRtaW5NYWluICgpXHJcbntcclxuICAgIHJldHVybiAoXHJcbiAgICAgICAgPGRpdj5cclxuICAgICAgICAgICAgPE5hdmlnYXRpb24gLz5cclxuICAgICAgICAgICAgPExheW91dD5cclxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicm93IGp1c3RpZnktY29udGVudC1jZW50ZXJcIj5cclxuICAgICAgICAgICAgICAgICAgICA8aDEgY2xhc3NOYW1lPVwibXQtMiBtYi00XCI+XHJcbiAgICAgICAgICAgICAgICAgICAgICAgIEFkbWluaXN0cmFkb3JcclxuICAgICAgICAgICAgICAgICAgICA8L2gxPlxyXG4gICAgICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgICAgIDwvTGF5b3V0PlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT1cImJ0bi1ncm91cC1hZG1pblwiIHN0eWxlPXt7dGV4dEFsaWduOiAnY2VudGVyJ319PlxyXG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXtwYWNrYWdlc09uQ2xpY2t9PkFkbWluaXN0cmFyIHBhcXVldGVzPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9e3NsT25DbGlja30+QWRtaW5pc3RyYXIgc2VndXJvcyBsYWJvcmFsZXM8L2J1dHRvbj5cclxuICAgICAgICAgICAgICAgIDxidXR0b24gb25DbGljaz17bXBPbkNsaWNrfT5BZG1pbmlzdHJhciBwbGFuZXMgYWxpbWVudGljaW9zPC9idXR0b24+XHJcbiAgICAgICAgICAgICAgICA8YnV0dG9uIG9uQ2xpY2s9e21zT25DbGlja30+QWRtaW5pc3RyYXIgcGVyc29uYWwgbcOpZGljbzwvYnV0dG9uPlxyXG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXt0T25DbGlja30+QWRtaW5pc3RyYXIgdHJhbnNwb3J0ZTwvYnV0dG9uPlxyXG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBvbkNsaWNrPXtjbG9zZVNlc3Npb259PkNlcnJhciBzZXNpw7NuPC9idXR0b24+XHJcblxyXG4gICAgICAgICAgICAgICAgPHN0eWxlIGpzeD57YFxyXG5cclxuICAgICAgICAgICAgICAgIC5idG4tZ3JvdXAtYWRtaW4gYnV0dG9uIHtcclxuICAgICAgICAgICAgICAgICAgICB3aWR0aDogNTAlO1xyXG4gICAgICAgICAgICAgICAgICAgIHRhYmxlLWxheW91dDogZml4ZWQ7XHJcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuICAgICAgICAgICAgICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyOjAuMWVtIHNvbGlkICNGRkZGRkY7XHJcbiAgICAgICAgICAgICAgICAgICAgZm9udC1zaXplOiAxNXB4O1xyXG4gICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xyXG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgICAgICAgICAgICBwYWRkaW5nOiAxZW0gMmVtO1xyXG4gICAgICAgICAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgICAgICAgICAgICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOm5vbmU7XHJcbiAgICAgICAgICAgICAgICAgICAgbWFyZ2luLXRvcDogNTBweDtcclxuICAgICAgICAgICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnM7XHJcbiAgICAgICAgICAgICAgICAgICAgZGlzcGxheTogaW5saW5lO1xyXG4gICAgICAgICAgICAgICAgICAgIGFsaWduLWl0ZW1zOmNlbnRlcjtcclxuICAgICAgICAgICAgICAgIH1cclxuXHJcbiAgICAgICAgICAgICAgICAuYnRuLWdyb3VwLWFkbWluIGJ1dHRvbjpob3ZlciB7XHJcbiAgICAgICAgICAgICAgICAgICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzQyYzhmNTtcclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIGB9PC9zdHlsZT5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICApXHJcbn0iXX0= */\n/*@ sourceURL=A:\\GIT_ROOT\\zona-recreativa-web\\pages\\adminMain.js */")));
+  }, ".btn-group-admin.jsx-924353260 button.jsx-924353260{width:50%;table-layout:fixed;border-collapse:collapse;position:relative;border:0.1em solid #FFFFFF;font-size:15px;background-color:black;color:white;padding:1em 2em;box-sizing:border-box;-webkit-text-decoration:none;text-decoration:none;margin-top:50px;text-align:center;-webkit-transition:all 0.2s;transition:all 0.2s;display:inline;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}.btn-group-admin.jsx-924353260 button.jsx-924353260:hover{color:#000000;background-color:#42c8f5;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL25hbm8vRG9jdW1lbnRzL0FkbVByb3llY3RvL3pvbmEtcmVjcmVhdGl2YS13ZWIvcGFnZXMvYWRtaW5NYWluLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXFDNEIsQUFJK0IsQUFtQkksVUFsQkssSUFtQk0sZUFsQkEsVUFtQjdCLGVBbEJzQixrQkFDUSwyQkFDWCxlQUNRLHVCQUNYLFlBQ0ksZ0JBQ00sc0JBQ0Ysa0RBQ0osZ0JBQ0Usa0JBQ0UsZ0RBQ0wsZUFDRyw2RkFDdEIiLCJmaWxlIjoiL2hvbWUvbmFuby9Eb2N1bWVudHMvQWRtUHJveWVjdG8vem9uYS1yZWNyZWF0aXZhLXdlYi9wYWdlcy9hZG1pbk1haW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTGF5b3V0IGZyb20gJy4vY29tcG9uZW50cy9HZW5lcmFsTGF5b3V0JztcbmltcG9ydCBOYXZpZ2F0aW9uIGZyb20gJy4vY29tcG9uZW50cy9OYXZpZ2F0aW9uJztcbmltcG9ydCBSb3V0ZXIgZnJvbSAnbmV4dC9yb3V0ZXInXG5cbmNvbnN0IGNsb3NlU2Vzc2lvbiA9ICgpID0+IFJvdXRlci5wdXNoKCcvJylcblxuY29uc3QgcGFja2FnZXNPbkNsaWNrID0gKCkgPT4gUm91dGVyLnB1c2goJy9hZG1pblBhY2thZ2VzJylcblxuY29uc3Qgc2xPbkNsaWNrID0gKCkgPT4gUm91dGVyLnB1c2goJy9hZG1pblNlZ3Vyb3MnKVxuXG5jb25zdCBtcE9uQ2xpY2sgPSAoKSA9PiBSb3V0ZXIucHVzaCgnL2FkbWluUGxhbmVzQScpXG5cbmNvbnN0IG1zT25DbGljayA9ICgpID0+IFJvdXRlci5wdXNoKCcvYWRtaW5QZXJzb25hbE0nKVxuXG5jb25zdCB0T25DbGljayA9ICgpID0+IFJvdXRlci5wdXNoKCcvYWRtaW5UcmFuJylcblxuXG4vL1xuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gYWRtaW5NYWluICgpXG57XG4gICAgcmV0dXJuIChcbiAgICAgICAgPGRpdj5cbiAgICAgICAgICAgIDxOYXZpZ2F0aW9uIC8+XG4gICAgICAgICAgICA8TGF5b3V0PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPVwicm93IGp1c3RpZnktY29udGVudC1jZW50ZXJcIj5cbiAgICAgICAgICAgICAgICAgICAgPGgxIGNsYXNzTmFtZT1cIm10LTIgbWItNFwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgQWRtaW5pc3RyYWRvclxuICAgICAgICAgICAgICAgICAgICA8L2gxPlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9XCJidG4tZ3JvdXAtYWRtaW4gY29sLTggbXgtYXV0b1wiIHN0eWxlPXt7dGV4dEFsaWduOiAnY2VudGVyJ319PlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiY29sLTRcIiBvbkNsaWNrPXtwYWNrYWdlc09uQ2xpY2t9PkFkbWluaXN0cmFyIHBhcXVldGVzPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9XCJjb2wtNFwiIG9uQ2xpY2s9e3NsT25DbGlja30+QWRtaW5pc3RyYXIgc2VndXJvcyBsYWJvcmFsZXM8L2J1dHRvbj5cbiAgICAgICAgICAgICAgICA8YnV0dG9uIGNsYXNzTmFtZT1cImNvbC00XCIgb25DbGljaz17bXBPbkNsaWNrfT5BZG1pbmlzdHJhciBwbGFuZXMgYWxpbWVudGljaW9zPC9idXR0b24+XG4gICAgICAgICAgICAgICAgPGJ1dHRvbiBjbGFzc05hbWU9XCJjb2wtNFwiIG9uQ2xpY2s9e21zT25DbGlja30+QWRtaW5pc3RyYXIgcGVyc29uYWwgbcOpZGljbzwvYnV0dG9uPlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiY29sLTRcIiBvbkNsaWNrPXt0T25DbGlja30+QWRtaW5pc3RyYXIgdHJhbnNwb3J0ZTwvYnV0dG9uPlxuICAgICAgICAgICAgICAgIDxidXR0b24gY2xhc3NOYW1lPVwiY29sLTRcIiBvbkNsaWNrPXtjbG9zZVNlc3Npb259PkNlcnJhciBzZXNpw7NuPC9idXR0b24+XG5cbiAgICAgICAgICAgICAgICA8c3R5bGUganN4PntgXG5cbiAgICAgICAgICAgICAgICAuYnRuLWdyb3VwLWFkbWluIGJ1dHRvbiB7XG4gICAgICAgICAgICAgICAgICAgIHdpZHRoOiA1MCU7XG4gICAgICAgICAgICAgICAgICAgIHRhYmxlLWxheW91dDogZml4ZWQ7XG4gICAgICAgICAgICAgICAgICAgIGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7XG4gICAgICAgICAgICAgICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgICAgICAgICAgICAgYm9yZGVyOjAuMWVtIHNvbGlkICNGRkZGRkY7XG4gICAgICAgICAgICAgICAgICAgIGZvbnQtc2l6ZTogMTVweDtcbiAgICAgICAgICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG4gICAgICAgICAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgICAgICAgICAgICAgcGFkZGluZzogMWVtIDJlbTtcbiAgICAgICAgICAgICAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICAgICAgICAgICAgICAgICAgdGV4dC1kZWNvcmF0aW9uOm5vbmU7XG4gICAgICAgICAgICAgICAgICAgIG1hcmdpbi10b3A6IDUwcHg7XG4gICAgICAgICAgICAgICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgICAgICAgICAgICAgdHJhbnNpdGlvbjogYWxsIDAuMnM7XG4gICAgICAgICAgICAgICAgICAgIGRpc3BsYXk6IGlubGluZTtcbiAgICAgICAgICAgICAgICAgICAgYWxpZ24taXRlbXM6Y2VudGVyO1xuICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgIC5idG4tZ3JvdXAtYWRtaW4gYnV0dG9uOmhvdmVyIHtcbiAgICAgICAgICAgICAgICAgICAgY29sb3I6ICMwMDAwMDA7XG4gICAgICAgICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICM0MmM4ZjU7XG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIGB9PC9zdHlsZT5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgPC9MYXlvdXQ+XG4gICAgICAgIDwvZGl2PlxuICAgIClcbn1cbiJdfQ== */\n/*@ sourceURL=/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/adminMain.js */"))));
 }
 
 /***/ }),
@@ -909,7 +909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "A:\\GIT_ROOT\\zona-recreativa-web\\pages\\components\\GeneralLayout.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/GeneralLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  // Layout general de las pantallas
@@ -950,7 +950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _timeline_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../timeline-style.css */ "./timeline-style.css");
 /* harmony import */ var _timeline_style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_timeline_style_css__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "A:\\GIT_ROOT\\zona-recreativa-web\\pages\\components\\Navigation.jsx";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Navigation.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // npm install react-bootstrap bootstrap
 
@@ -1039,7 +1039,7 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, "Galer\xEDa")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
-      href: "",
+      href: "/informacion",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 37
@@ -1053,7 +1053,7 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, "Informaci\xF3n"))), __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1___default.a.Brand, {
-      className: "d-none d-md-block col-xs-1 col-md-1",
+      className: "d-none d-md-block col-xs-1 col-md-1 ml-5",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 49
@@ -1086,14 +1086,14 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
-      href: "",
+      href: "/proveedores",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 61
       },
       __self: this
     }, __jsx("a", {
-      className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
+      className: "nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 62
@@ -1107,14 +1107,13 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("a", {
-      className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
+      className: "nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 67
       },
       __self: this
     }, "Contacto")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
-      href: "",
       href: "/about",
       __source: {
         fileName: _jsxFileName,
@@ -1122,14 +1121,13 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("a", {
-      className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
+      className: "nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 72
       },
       __self: this
     }, "Acerca de")), __jsx(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
-      href: "",
       href: "/adminLogin",
       __source: {
         fileName: _jsxFileName,
@@ -1137,13 +1135,13 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("a", {
-      className: "nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2",
+      className: "nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 77
       },
       __self: this
-    }, "Administrador")))), __jsx("link", {
+    }, "Admin")))), __jsx("link", {
       rel: "stylesheet",
       href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
       integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
@@ -1184,14 +1182,14 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!**********************************!*\
   !*** multi ./pages/adminMain.js ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! A:\GIT_ROOT\zona-recreativa-web\pages\adminMain.js */"./pages/adminMain.js");
+module.exports = __webpack_require__(/*! /home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/adminMain.js */"./pages/adminMain.js");
 
 
 /***/ }),

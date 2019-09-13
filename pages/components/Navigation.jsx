@@ -34,7 +34,7 @@ class Navigation extends Component {
                             Galería
                         </a>
                     </Link>
-                    <Link href="">
+                    <Link href="/informacion">
                         <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
                             Información
                         </a>
@@ -46,7 +46,7 @@ class Navigation extends Component {
 
                  */
                 }
-                <Navbar.Brand className="d-none d-md-block col-xs-1 col-md-1">
+                <Navbar.Brand className="d-none d-md-block col-xs-1 col-md-1 ml-5">
                     <Link href="/">
                         <Image className="d-none d-md-block" src={require('../resources/logo.png')}  style={ {cursor:'pointer' }} fluid/>
                     </Link>
@@ -58,24 +58,24 @@ class Navigation extends Component {
                  */
                 }
                 <Nav className="pr-xl-5 pr-lg-4 pr-md-2 pr-sm-3 pl-4 col-xs-2">
-                    <Link href="">
-                        <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
+                    <Link href="/proveedores">
+                        <a className="nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2">
                             Proveedores
                         </a>
                     </Link>
                     <Link href="/contact">
-                        <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
+                        <a className="nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2">
                             Contacto
                         </a>
                     </Link>
-                    <Link href="" href="/about">
-                        <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
+                    <Link href="/about">
+                        <a className="nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2">
                             Acerca de
                         </a>
                     </Link>
-                    <Link href="" href="/adminLogin">
-                        <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
-                            Administrador
+                    <Link href="/adminLogin">
+                        <a className="nav-link px-lg-4 px-xl-2 px-sm-2 mx-md-2">
+                            Admin
                         </a>
                     </Link>
                 </Nav>

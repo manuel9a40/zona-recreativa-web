@@ -86,19 +86,6 @@ class Album extends React.Component {
     }
 }
 
-Album.propTypes = {
-    images: PropTypes.arrayOf(
-        PropTypes.shape({
-            src: PropTypes.string.isRequired,
-            thumbnail: PropTypes.string.isRequired,
-            srcset: PropTypes.array,
-            caption: PropTypes.string,
-            thumbnailWidth: PropTypes.number.isRequired,
-            thumbnailHeight: PropTypes.number.isRequired,
-            isSelected: PropTypes.bool
-        })
-    ).isRequired
-};
 
 Album.defaultProps = {
     images: [

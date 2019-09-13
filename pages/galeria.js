@@ -5,19 +5,22 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
 
+import data from './data/viajes.json';
+
+
 function multPrint ()
 {
     var cards = ["viaje1", "viaje2", "viaje3", "viaje4", "viaje5"];
-    return cards.map(card => ( //change this
-        <div className="card mb-3 col-lg-3 col-12 mx-2" >
+    return data.map(item => (
+        <div key={item.id} className="card mb-3 col-lg-3 col-12 mx-2" >
             <div className="card-body text-center p-3">
                 <h5 className="card-title">
-                    {card}
+                    {item.name}
                 </h5>
                 <p className="card-text">
-                    {card}
+                    {item.date}
                 </p>
-                <Link href="/pAlbum/[album]" as={`/pAlbum/${cards}`}>
+                <Link href="/pAlbum/[album]" as={`/pAlbum/${item.id}`}>
                     <Button className="btn-sm mb-3" variant="dark">
                         Ver más
                     </Button>

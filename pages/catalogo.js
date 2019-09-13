@@ -2,11 +2,14 @@ import Layout from './components/GeneralLayout';
 import Navigation from './components/Navigation';
 import Package from './components/Package';
 
+
+import data from './data/packages.json';
+
 function multPrint ()
 {
     var cards = ["card1", "card2", "Card 3", "Card 4", "Card 5"];
-    return cards.map(card => (
-        <Package key={card} title={card} msg="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu rhoncus libero. Integer nibh ante, semper non lacus id, bibendum laoreet enim. Nulla libero ante, vestibulum non erat in, facilisis volutpat ligula." />
+    return data.map(item => (
+        <Package key={item.id} uid={item.id} title={item.name} msg={item.description} img={item.img} />
     ));
 }
 

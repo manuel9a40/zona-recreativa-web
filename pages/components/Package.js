@@ -21,7 +21,7 @@ const Package = (props) => (
         <div className="row no-gutters" >
             <div className="m-2 my-md-auto mx-auto mb-3 col-md-3 col-7">
                 <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.title}`}>
-                    <img src={require('../resources/logo.png')} className="card-img p-2 border border-secondary" alt="..." style={ {cursor:'pointer' }} />
+                    <img src={require('../resources/' + props.img)} className="card-img p-2 border border-secondary" alt="..." style={ {cursor:'pointer' }} />
                 </Link>
             </div>
             <div className="col-md-8 col-10">
@@ -32,7 +32,7 @@ const Package = (props) => (
                     <p className="card-text">
                         {cutMsg(props.msg)}
                     </p>
-                    <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.title}`}>
+                    <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.uid}`}>
                         <Button onClick={() => sayHello(props.title)} className="btn-sm float-right mb-3" variant="dark">
                             Ver más
                         </Button>

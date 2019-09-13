@@ -12,7 +12,7 @@ const mpOnClick = () => Router.push('/adminPlanesA')
 
 const msOnClick = () => Router.push('/adminPersonalM')
 
-const tOnClick = () => Router.push('/adminTrans')
+const tOnClick = () => Router.push('/adminTran')
 
 
 //
@@ -27,14 +27,13 @@ export default function adminMain ()
                         Administrador
                     </h1>
                 </div>
-            </Layout>
-            <div className="btn-group-admin" style={{textAlign: 'center'}}>
-                <button onClick={packagesOnClick}>Administrar paquetes</button>
-                <button onClick={slOnClick}>Administrar seguros laborales</button>
-                <button onClick={mpOnClick}>Administrar planes alimenticios</button>
-                <button onClick={msOnClick}>Administrar personal médico</button>
-                <button onClick={tOnClick}>Administrar transporte</button>
-                <button onClick={closeSession}>Cerrar sesión</button>
+            <div className="btn-group-admin col-8 mx-auto" style={{textAlign: 'center'}}>
+                <button className="col-4" onClick={packagesOnClick}>Administrar paquetes</button>
+                <button className="col-4" onClick={slOnClick}>Administrar seguros laborales</button>
+                <button className="col-4" onClick={mpOnClick}>Administrar planes alimenticios</button>
+                <button className="col-4" onClick={msOnClick}>Administrar personal médico</button>
+                <button className="col-4" onClick={tOnClick}>Administrar transporte</button>
+                <button className="col-4" onClick={closeSession}>Cerrar sesión</button>
 
                 <style jsx>{`
 
@@ -63,6 +62,7 @@ export default function adminMain ()
                 }
                 `}</style>
             </div>
+            </Layout>
         </div>
     )
 }

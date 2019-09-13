@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import fetch from 'isomorphic-unfetch';
 import Error from 'next/error'
 
-import data from '../data/infoPackage.json';
+import data from '../data/photos.json';
 
 import Album from '../components/Album'
 
@@ -17,21 +17,21 @@ const album = props => {
         <Layout>
             <h1 className="pt-4 text-center mb-4">{props.info.name}</h1>
             <div className="container mb-5 pt-sm-auto ">
-                <Album />
+                <Album images={props.info.imgs}/>
             </div>
         </Layout>
     </div>
 };
 
 album.getInitialProps = async function(context) {
-    const { infoPkg } = context.query;
+    const { album } = context.query;
   //
   // return { infoPkg };
 
     var errorCode = false;
 
     for (var i = 0; i < data.length; i++) {
-        if (typeof data[i].id !== 'undefined' && data[i].id == infoPkg)
+        if (typeof data[i].id !== 'undefined' && data[i].id == album)
         {
             var result = data[i];
             // console.log(result)
