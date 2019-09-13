@@ -73,6 +73,11 @@ class Navigation extends Component {
                             Acerca de
                         </a>
                     </Link>
+                    <Link href="" href="/adminLogin">
+                        <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
+                            Administrador
+                        </a>
+                    </Link>
                 </Nav>
         </Navbar.Collapse>
 

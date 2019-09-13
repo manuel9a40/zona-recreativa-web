@@ -6,13 +6,13 @@ const closeSession = () => Router.push('/')
 
 const packagesOnClick = () => Router.push('/adminPackages')
 
-const slOnClick = () => null
+const slOnClick = () => Router.push('/adminSeguros')
 
-const mpOnClick = () => null
+const mpOnClick = () => Router.push('/adminPlanesA')
 
-const msOnClick = () => null
+const msOnClick = () => Router.push('/adminPersonalM')
 
-const tOnClick = () => null
+const tOnClick = () => Router.push('/adminTrans')
 
 
 //

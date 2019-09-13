@@ -28,6 +28,10 @@ Also you'll need the following packages:
 
 `npm i react-grid-gallery`
 
+`npm install --save formik`
+
+`npm install --save-dev typescript @types/react @types/node`
+
 ## About
 
 Timeline based on a tutorial blog made by Florian Pop

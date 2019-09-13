@@ -4,10 +4,6 @@
     "static/development/dll/dll_9e2a3f9838424feeb96c.js.map"
   ],
   "pages": {
-    "/": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -16,11 +12,25 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/contact": [
+    "/adminLogin": [
       "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/pAlbum/[album]": [
+    "/adminMain": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/adminPackages": [
+      "static/runtime/webpack.js",
+      "static/css/styles.chunk.css",
+      "static/chunks/styles.js",
+      "static/runtime/main.js"
+    ],
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
