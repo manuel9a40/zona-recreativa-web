@@ -1,13 +1,12 @@
 // npm install react-bootstrap bootstrap
 
-
 import React, {Component} from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Image from 'react-bootstrap/Image'
 import Badge from 'react-bootstrap/Badge'
 import Link from 'next/link';
-
+import '../../timeline-style.css'
 class Navigation extends Component {
     render() {
         return (<Navbar className="shadow sticky-top " collapseOnSelect="collapseOnSelect" expand="md" bg="light" variant="light">
@@ -30,7 +29,7 @@ class Navigation extends Component {
                             Catálogo
                         </a>
                     </Link>
-                    <Link href="">
+                    <Link href="/galeria">
                         <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
                             Galería
                         </a>
@@ -64,7 +63,7 @@ class Navigation extends Component {
                             Proveedores
                         </a>
                     </Link>
-                    <Link href="">
+                    <Link href="/contact">
                         <a className="nav-link px-lg-4 px-xl-4 px-sm-2 mx-md-2">
                             Contacto
                         </a>

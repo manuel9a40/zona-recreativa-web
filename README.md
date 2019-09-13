@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,7 +12,11 @@ You will also see any lint errors in the console.
 
 ## Needed packages
 
-Run the following commands:
+First you'll need to install NextJS:
+
+`npm install --save react react-dom next`
+
+Also you'll need the following packages:
 
 `npm install react-bootstrap bootstrap`
 
@@ -23,6 +25,8 @@ Run the following commands:
 `npm install --save @zeit/next-css`
 
 `npm i react-google-maps`
+
+`npm i react-grid-gallery`
 
 ## About
 

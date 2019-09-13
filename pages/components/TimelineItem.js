@@ -1,12 +1,28 @@
 
 import '../../timeline-style.css'
 
+function ifData(data)
+{
+    if (typeof data !== 'undefined')
+        return data;
+    else
+        return ;
+}
+
 function validate(time)
 {
     if (typeof time !== 'undefined')
         return time;
     else
-        return '';
+        return ;
+}
+
+function getDuration(dur)
+{
+    if (typeof dur !== 'undefined')
+        return 'Duracion: ' + dur;
+    else
+        return ;
 }
 
 const TimelineItem = ({ data }) => (
@@ -17,7 +33,7 @@ const TimelineItem = ({ data }) => (
                     { validate(validate(data).time) }
                 </time>
                 <span className="tag col-auto mt-md-0 mt-2 ml-md-auto">
-                {"Duración: " + validate(validate(data).duracion)} //validate(data) may return '' and remove text if duracion is null
+                { getDuration(validate(ifData(data).duracion))}
                 </span>
             </h6>
 
