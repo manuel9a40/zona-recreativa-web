@@ -1,5 +1,5 @@
 
-import '../../timeline-style.css'
+import '../style/timeline-style.css'
 
 function ifData(data)
 {

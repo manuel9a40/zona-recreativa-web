@@ -2,9 +2,11 @@ import Container from 'react-bootstrap/Container'
 
 // Layout general de las pantallas
 const Layout = props => (
-  <Container className="justify-content-center pt-4 col-9 col-md-10 col-lg-11 col-xl-12">
-    {props.children}
-    </Container>
+    <div style={{background: "#00aeef99"}}>
+        <Container className="justify-content-center pt-4 col-8 col-md-10 col-lg-11 col-xl-9 bg-light" >
+        {props.children}
+        </Container>
+    </div>
 );
 
 export default Layout;
