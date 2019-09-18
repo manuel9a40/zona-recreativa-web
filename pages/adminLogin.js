@@ -1,8 +1,19 @@
 import Layout from './components/GeneralLayout';
 import Navigation from './components/Navigation';
-import { InputField } from './components/Fields/InputField';
 import Router from 'next/router'
 import { Formik, Field } from 'formik';
+
+const InputField = ({
+    field,
+    form: _,
+    ...props
+    }) => {
+    return (
+        <div>
+            <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
+        </div>
+    );
+};
 
 function login(data) { 
     if(data.username === "admin" && data.password === "admin") {
@@ -13,7 +24,8 @@ function login(data) {
 }
 
 export default function adminPackages ()
-{       return(
+{
+    return(
         <div>
             <Navigation />
             <Layout>
@@ -22,46 +34,46 @@ export default function adminPackages ()
                         Iniciar Sesión
                     </h1>
                 </div>
-            </Layout>
-            <div className="login-admin-group" style={{textAlign: 'center'}}>
-                <Formik  onSubmit={(data)=>{login(data)}}
-                    initialValues = {{
-                        username: "",
-                        password: ""
-                    }}>
+                <div className="login-admin-group" style={{textAlign: 'center'}}>
+                    <Formik  onSubmit={(data)=>{login(data)}}
+                        initialValues = {{
+                            username: "",
+                            password: ""
+                        }}>
                         {({handleSubmit}) =>  
-                        <form onSubmit={handleSubmit}>
-                            <Field name="username" placeholder="Usuario" component={InputField}/>
-                            <Field name="password" type="password" placeholder="Contraseña" component={InputField}/>
-                            <div className="form-buttns" style={{textAlign: 'center'}}>
-                                <button type="submit">Iniciar sesión</button>
-                            </div>
-                        </form>  }
-    
-                </Formik>
+                            <form onSubmit={handleSubmit}>
+                                <Field name="username" placeholder="Usuario" component={InputField}/>
+                                <Field name="password" type="password" placeholder="Contraseña" component={InputField}/>
+                                <div className="form-buttns" style={{textAlign: 'center'}}>
+                                    <button type="submit">Iniciar sesión</button>
+                                </div>
+                            </form>
+                        }
 
-                <style jsx>{`
+                    </Formik>
 
-                .login-admin-group button {
-                    position: relative;
-                    border:0.1em solid #42c8f5;
-                    font-size: 15px;
-                    background-color: black;
-                    color: white;
-                    padding: 1em 2em;
-                    box-sizing: border-box;
-                    text-decoration:none;
-                    margin-top: 25px;
-                    text-align: center;
-                    transition: all 0.2s;
-                }
+                    <style jsx>{`
+                        .login-admin-group button {
+                            position: relative;
+                            border:0.1em solid #42c8f5;
+                            font-size: 15px;
+                            background-color: black;
+                            color: white;
+                            padding: 1em 2em;
+                            box-sizing: border-box;
+                            text-decoration:none;
+                            margin-top: 25px;
+                            text-align: center;
+                            transition: all 0.2s;
+                        }
 
-                .login-admin-group button:hover {
-                    color: #000000;
-                    background-color: #42c8f5;
-                }
-                `}</style>
-            </div>
+                        .login-admin-group button:hover {
+                            color: #000000;
+                            background-color: #42c8f5;
+                        }
+                    `}</style>
+                </div>
+            </Layout>
         </div>
     )
 }

@@ -1,8 +1,30 @@
 import Layout from './components/GeneralLayout';
 import Navigation from './components/Navigation';
-import { InputField } from './components/Fields/InputField';
-import { SelectField } from './components/Fields/SelectField';
 import { Formik, Field } from 'formik';
+
+const InputField = ({
+    field,
+    form: _,
+    ...props
+    }) => {
+    return (
+        <div>
+            <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
+        </div>
+    );
+};
+
+const SelectField = ({
+    field,
+    form: _,
+    ...props
+    }) => {
+    return (
+        <div>
+            <select style={{marginTop:20, marginBottom:10 , padding:10}} {...field} {...props}/>
+        </div>
+    );
+};
 
 export default function adminTrans ()
 {       return(

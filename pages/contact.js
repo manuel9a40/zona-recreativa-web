@@ -71,7 +71,7 @@ class Proveedores extends Component {
                     <Alert variant="success" show={this.state.showAlert} onClose={this.handleClose} dismissible>
                         Datos enviados
                     </Alert>
-                    <div className="row col-6 row pt-4 mx-auto">
+                    <div className="row col-6 pt-4 mx-auto">
                         { /*
                             Formulario de proveedores (Izquierda)
                         */ }
@@ -93,23 +93,25 @@ class Proveedores extends Component {
                             Información de contacto (Derecha)
                         */ }
                         <div className="col-xs-2 col-sm-3 col-md-4 col-lg-5 col-xl-4 ">
-                            <div className="justify-content-center">
-                                <div>
+                            { /*<div className="justify-content-center">
+                                <div>*/ }
                                     <h6>Zona Recreativa CR</h6>
 
                                     <p className="text-secondary">
                                         acme.info@2mail.com
-                                    </p>
-                                    <p className="text-secondary">
+                                        <br/>
                                         +0 000-000-0000
                                     </p>
+                                    { /*<p className="text-secondary">
+                                        +0 000-000-0000
+                                    </p>*/ }
                                     { /*<h6>FOLLOW US</h6>*/ }
 
                                     { /*
                                         Enlaces externos
                                     */ }
-                                </div>
-                            </div>
+                                { /*</div>
+                            </div>*/ }
                         </div>
                     </div>
                 </Layout>
