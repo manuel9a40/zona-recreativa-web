@@ -4,28 +4,17 @@ In the project directory, you can run:
 
 ### `npm run dev`
 
-Runs the app in the development mode.<br>
+Runs the app in the development mode. 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
+The page will reload if you make edits. 
 You will also see any lint errors in the console.
 
 ## Needed packages
 
-First you'll need to install NextJS:
+Install all needed packages:
 
-`npm install --save react react-dom next`
-
-Also you'll need the following packages:
-
-`npm install react-bootstrap bootstrap react-grid-gallery`
-
-`npm install --save next-images @zeit/next-css formik`
-
-`npm install --save-dev typescript @types/react @types/node`
-
-`npm i react-google-maps`
-
+`npm install`
 
 
 ## About

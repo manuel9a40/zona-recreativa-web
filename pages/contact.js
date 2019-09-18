@@ -1,5 +1,6 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Alert from 'react-bootstrap/Alert'
 
 import Navigation from './components/Navigation'
 import Layout from './components/GeneralLayout'
@@ -14,12 +15,14 @@ class Proveedores extends Component {
         //inicializa state
         this.state = {
             email: '',
-            message: ''
+            message: '',
+            showAlert: false
         };
 
         //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     //Se activa cuando se presiona enviar
@@ -29,13 +32,19 @@ class Proveedores extends Component {
         e.preventDefault();
 
         //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
-        console.log(this.state)
+        this.setState({showAlert: true});
+        //console.log(this.state);
 
         //Reincia los inputs
         this.setState({
             email: '',
             message: ''
         });
+    }
+
+    handleClose(e)
+    {
+        this.setState({showAlert: false});
     }
 
     //Actualiza los valores cada vez que se hace un cambio en el input
@@ -59,6 +68,9 @@ class Proveedores extends Component {
                 <Layout>
                     <h1 className="text-center pb-3">Contacto</h1>
 
+                    <Alert variant="success" show={this.state.showAlert} onClose={this.handleClose} dismissible>
+                        Datos enviados
+                    </Alert>
                     <div className="row col-6 row pt-4 mx-auto">
                         { /*
                             Formulario de proveedores (Izquierda)

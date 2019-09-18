@@ -4,7 +4,7 @@
     position: relative;
 }
 
-.timeline-container::after { /* linea roja */
+.timeline-container::after { /* linea roja ¡¡¡digo verde!!! */
     background-color: #28a745;
     content: '';
     position: absolute;
@@ -21,9 +21,9 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
-.timeline-item-content::after { /* Flecha a la izquierda*/
+.timeline-item-content::after { /* Flecha a la izquierda */
     content: ' ';
-    background-color: #fff;
+    background-color: #f8f9fa;
     position: absolute;
     top: calc(50% - 7.5px);
     transform: rotate(45deg);
