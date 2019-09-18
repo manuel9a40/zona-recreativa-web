@@ -18,22 +18,22 @@ First you'll need to install NextJS:
 
 Also you'll need the following packages:
 
-`npm install react-bootstrap bootstrap`
+`npm install react-bootstrap bootstrap react-grid-gallery`
 
-`npm install --save next-images`
+`npm install --save next-images @zeit/next-css formik`
 
-`npm install --save @zeit/next-css`
+`npm install --save-dev typescript @types/react @types/node`
 
 `npm i react-google-maps`
 
-`npm i react-grid-gallery`
 
-`npm install --save formik`
-
-`npm install --save-dev typescript @types/react @types/node`
 
 ## About
 
 Timeline based on a tutorial blog made by Florian Pop
 
 https://www.florin-pop.com/blog/2019/04/how-to-create-a-timeline-with-react/
+
+Filter
+
+https://docs.searchkit.co/stable/

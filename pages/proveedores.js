@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 
 import Navigation from './components/Navigation'
 import Layout from './components/GeneralLayout'
+import './style/dropFile.css'
 
 import React, { Component } from 'react';
 
@@ -137,6 +138,12 @@ class Proveedores extends Component {
                                 <div className="col">
                                     <label htmlFor="comment">Comentarios</label>
                                     <Form.Control name="comment" as="textarea" rows="5" placeholder="" value={this.state.comment} onChange={this.handleInputChange}/>
+                                </div>
+                            </div>
+                            <div className="row mt-2">
+                                <div className="col form-group files color">
+                                    <label>Subir archivo (informacion adicional) </label>
+                                    <input type="file" className="form-control" multiple=""/>
                                 </div>
                             </div>
                             <div className="row mt-2">

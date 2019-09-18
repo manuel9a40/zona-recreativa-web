@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
-import '../../timeline-style.css'
+import '../style/timeline-style.css'
 
 
 function sayHello(msg) {
@@ -17,7 +17,7 @@ function cutMsg(msg) {
 }
 
 const Package = (props) => (
-    <div className="card mb-3 col-lg-8 col-12 mx-auto" >
+    <div className="card mb-3 col-lg-10 col-12 mx-auto" >
         <div className="row no-gutters" >
             <div className="m-2 my-md-auto mx-auto mb-3 col-md-3 col-7">
                 <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.uid}`}>
