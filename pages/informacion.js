@@ -24,7 +24,7 @@ export default function About() {
                     </ul>
                 </div>
 
-                <div className="mx-auto mt-5 col-8">
+                <div className="mx-auto mt-5 pb-4 col-8">
                     <h3 className=""> Requisitos </h3>
 
                     <p> Para poder utilizar nuestros servicios es necesario que cumpla ciertos requisitos:</p>
@@ -37,10 +37,6 @@ export default function About() {
                         <li>Nullam ornare orci nec neque iaculis, sed tristique magna blandit. </li>
                         <li>Quisque vel turpis nec risus condimentum semper. </li>
                     </ul>
-                </div>
-
-                <div className="my-5">
-                    <p/>
                 </div>
         </Layout>
     </div>

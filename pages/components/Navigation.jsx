@@ -10,7 +10,7 @@ import '../style/timeline-style.css'
 
 class Navigation extends Component {
     render() {
-        return (<Navbar className="shadow sticky-top " collapseOnSelect="collapseOnSelect" expand="md" style={{background: "#F05261"}} /* bg="light" variant="light"*/>
+        return (<Navbar className="shadow sticky-top " collapseOnSelect="collapseOnSelect" expand="md" style={{background: "#f5616f"}} /* bg="light" variant="light"*/>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse className="justify-content-between" id="responsive-navbar-nav">
                 {/*
@@ -49,7 +49,7 @@ class Navigation extends Component {
                 }
                 <Navbar.Brand className="d-none d-md-block col-xs-1 col-md-1 ml-5">
                     <Link href="/">
-                        <Image className="d-none d-md-block " src={require('../resources/logo-1.png')}  style={{cursor:'pointer', height: "75px" }} fluid/>
+                        <Image className="d-none d-md-block " src={require('../resources/logo-1.png')}  style={{cursor:'pointer', height: "40px" }} fluid/>
                     </Link>
                 </Navbar.Brand>
                 {/*

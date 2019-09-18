@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -775,7 +775,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Package__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Package */ "./pages/components/Package.js");
 /* harmony import */ var _data_packages_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data/packages.json */ "./pages/data/packages.json");
 var _data_packages_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./data/packages.json */ "./pages/data/packages.json", 1);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/catalogo.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/catalogo.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -848,27 +848,26 @@ function catalogo() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/GeneralLayout.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/GeneralLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
- // Layout general de las pantallas
 
+// Layout general de las pantallas
 const Layout = props => __jsx("div", {
+  className: "mb-0",
   style: {
     background: "#00aeef99"
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 5
+    lineNumber: 4
   },
   __self: undefined
-}, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  className: "justify-content-center pt-4 col-8 col-md-10 col-lg-11 col-xl-9 bg-light",
+}, __jsx("div", {
+  className: "container justify-content-center pt-4 col-8 col-md-10 col-lg-11 col-xl-10 bg-light",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 6
+    lineNumber: 5
   },
   __self: undefined
 }, props.children));
@@ -900,7 +899,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../style/timeline-style.css */ "./pages/style/timeline-style.css");
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_timeline_style_css__WEBPACK_IMPORTED_MODULE_6__);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/Navigation.jsx";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Navigation.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 // npm install react-bootstrap bootstrap
 
@@ -918,7 +917,7 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       collapseOnSelect: "collapseOnSelect",
       expand: "md",
       style: {
-        background: "#F05261"
+        background: "#f5616f"
       }
       /* bg="light" variant="light"*/
       ,
@@ -1024,7 +1023,7 @@ class Navigation extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       src: __webpack_require__(/*! ../resources/logo-1.png */ "./pages/resources/logo-1.png"),
       style: {
         cursor: 'pointer',
-        height: "75px"
+        height: "40px"
       },
       fluid: true,
       __source: {
@@ -1133,7 +1132,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../style/timeline-style.css */ "./pages/style/timeline-style.css");
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/Package.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Package.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -1152,7 +1151,7 @@ function cutMsg(msg) {
 }
 
 const Package = props => __jsx("div", {
-  className: "card mb-3 col-lg-8 col-12 mx-auto",
+  className: "card mb-3 col-lg-10 col-12 mx-auto",
   __source: {
     fileName: _jsxFileName,
     lineNumber: 20
@@ -1174,7 +1173,7 @@ const Package = props => __jsx("div", {
   __self: undefined
 }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
   href: "/pPackage/[infoPkg]",
-  as: `/pPackage/${props.title}`,
+  as: `/pPackage/${props.uid}`,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 23
@@ -1270,7 +1269,6 @@ var map = {
 	"./f.jpg": "./pages/resources/f.jpg",
 	"./logo-1.png": "./pages/resources/logo-1.png",
 	"./logo.png": "./pages/resources/logo.png",
-	"./logo.svg": "./pages/resources/logo.svg",
 	"./logo.xcf": "./pages/resources/logo.xcf",
 	"./map.jpg": "./pages/resources/map.jpg"
 };
@@ -1385,17 +1383,6 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 
 /***/ }),
 
-/***/ "./pages/resources/logo.svg":
-/*!**********************************!*\
-  !*** ./pages/resources/logo.svg ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/_next/static/images/logo-9e515ff7d9b2dfd87e03dff1527b5660.svg";
-
-/***/ }),
-
 /***/ "./pages/resources/logo.xcf":
 /*!**********************************!*\
   !*** ./pages/resources/logo.xcf ***!
@@ -1429,14 +1416,14 @@ module.exports = "/_next/static/images/map-3b067279b1abbdccace96fe4be818d73.jpg"
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*********************************!*\
   !*** multi ./pages/catalogo.js ***!
   \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/catalogo.js */"./pages/catalogo.js");
+module.exports = __webpack_require__(/*! /home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/catalogo.js */"./pages/catalogo.js");
 
 
 /***/ }),
@@ -1592,17 +1579,6 @@ module.exports = require("react-bootstrap/Button");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/Card");
-
-/***/ }),
-
-/***/ "react-bootstrap/Container":
-/*!********************************************!*\
-  !*** external "react-bootstrap/Container" ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-bootstrap/Container");
 
 /***/ }),
 

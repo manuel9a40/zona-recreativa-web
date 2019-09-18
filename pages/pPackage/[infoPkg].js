@@ -17,9 +17,9 @@ const Post = props => {
         <Navigation />
         <Layout>
             <h1 className="pt-4 text-center mb-4">{props.info.name}</h1>
-            <div className="container mb-5 pt-sm-auto ">
+            <div className="container mb-5 pt-sm-auto col-lg-11 ">
                 <div className="row">
-                    <div className="container col-md-6 col-sm-12 pr-4 mt-md-3 mt-1">
+                    <div className="container col-md-7 col-sm-12 pr-4 mt-md-3 mt-1">
                         <h3 className="row mb-3">
                             Descripción
                         </h3>
@@ -31,7 +31,7 @@ const Post = props => {
                         </h3>
                         <img src={require('../resources' + props.info.map)} className="col-12 p-0"/>
                     </div>
-                    <div className="col-md-6 col-sm-12 pl-sm-4 pl-0 mt-3">
+                    <div className="col-md-5 col-sm-12 pl-sm-4 pl-0 mt-3">
                         <h3 className="mb-3">
                             Itinerario
                         </h3>

@@ -1,7 +1,7 @@
 {
   "devFiles": [
-    "static/development/dll/dll_397dc449097af0b4e992.js",
-    "static/development/dll/dll_397dc449097af0b4e992.js.map"
+    "static/development/dll/dll_9e2a3f9838424feeb96c.js",
+    "static/development/dll/dll_9e2a3f9838424feeb96c.js.map"
   ],
   "pages": {
     "/_app": [
@@ -18,7 +18,7 @@
       "static/chunks/styles.js",
       "static/runtime/main.js"
     ],
-    "/contact": [
+    "/pPackage/[infoPkg]": [
       "static/runtime/webpack.js",
       "static/css/styles.chunk.css",
       "static/chunks/styles.js",

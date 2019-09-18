@@ -6814,10 +6814,10 @@ exports.SUPPORTS_PERFORMANCE_USER_TIMING = exports.SUPPORTS_PERFORMANCE && typeo
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fest%2F2013%2Febosques%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./":
-/*!*****************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fest%2F2013%2Febosques%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
-  \*****************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
+  \*********************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7972,12 +7972,12 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_01f9a3fa864a7b7414d8 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_129a35c7ec57967eb265 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_01f9a3fa864a7b7414d8 */ "dll-reference dll_01f9a3fa864a7b7414d8"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_129a35c7ec57967eb265 */ "dll-reference dll_129a35c7ec57967eb265"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -8557,12 +8557,12 @@ module.exports = exports['default'];
 
 /***/ "./node_modules/prop-types/checkPropTypes.js":
 /*!*********************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_01f9a3fa864a7b7414d8 ***!
+  !*** delegated ./node_modules/prop-types/checkPropTypes.js from dll-reference dll_129a35c7ec57967eb265 ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_01f9a3fa864a7b7414d8 */ "dll-reference dll_01f9a3fa864a7b7414d8"))("./node_modules/prop-types/checkPropTypes.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_129a35c7ec57967eb265 */ "dll-reference dll_129a35c7ec57967eb265"))("./node_modules/prop-types/checkPropTypes.js");
 
 /***/ }),
 
@@ -9197,12 +9197,12 @@ if (true) {
 
 /***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
 /*!*******************************************************************************************************************!*\
-  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_01f9a3fa864a7b7414d8 ***!
+  !*** delegated ./node_modules/prop-types/lib/ReactPropTypesSecret.js from dll-reference dll_129a35c7ec57967eb265 ***!
   \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_01f9a3fa864a7b7414d8 */ "dll-reference dll_01f9a3fa864a7b7414d8"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_129a35c7ec57967eb265 */ "dll-reference dll_129a35c7ec57967eb265"))("./node_modules/prop-types/lib/ReactPropTypesSecret.js");
 
 /***/ }),
 
@@ -10088,59 +10088,6 @@ function (_React$Component) {
 
 Collapse.defaultProps = defaultProps;
 var _default = Collapse;
-exports.default = _default;
-module.exports = exports["default"];
-
-/***/ }),
-
-/***/ "./node_modules/react-bootstrap/Container.js":
-/*!***************************************************!*\
-  !*** ./node_modules/react-bootstrap/Container.js ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "./node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/extends.js"));
-
-var _objectWithoutPropertiesLoose2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/objectWithoutPropertiesLoose.js"));
-
-var _classnames = _interopRequireDefault(__webpack_require__(/*! classnames */ "./node_modules/classnames/index.js"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _ThemeProvider = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/ThemeProvider.js");
-
-var defaultProps = {
-  fluid: false
-};
-
-var Container = _react.default.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
-function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      fluid = _ref.fluid,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      className = _ref.className,
-      props = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["bsPrefix", "fluid", "as", "className"]);
-  var prefix = (0, _ThemeProvider.useBootstrapPrefix)(bsPrefix, 'container');
-  return _react.default.createElement(Component, (0, _extends2.default)({
-    ref: ref
-  }, props, {
-    className: (0, _classnames.default)(className, fluid ? prefix + "-fluid" : prefix)
-  }));
-});
-
-Container.displayName = 'Container';
-Container.defaultProps = defaultProps;
-var _default = Container;
 exports.default = _default;
 module.exports = exports["default"];
 
@@ -11156,12 +11103,12 @@ module.exports = exports["default"];
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_01f9a3fa864a7b7414d8 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_129a35c7ec57967eb265 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_01f9a3fa864a7b7414d8 */ "dll-reference dll_01f9a3fa864a7b7414d8"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_129a35c7ec57967eb265 */ "dll-reference dll_129a35c7ec57967eb265"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -12146,12 +12093,12 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_01f9a3fa864a7b7414d8 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_129a35c7ec57967eb265 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_01f9a3fa864a7b7414d8 */ "dll-reference dll_01f9a3fa864a7b7414d8"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_129a35c7ec57967eb265 */ "dll-reference dll_129a35c7ec57967eb265"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -14074,7 +14021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Package__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Package */ "./pages/components/Package.js");
 /* harmony import */ var _data_packages_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./data/packages.json */ "./pages/data/packages.json");
 var _data_packages_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./data/packages.json */ "./pages/data/packages.json", 1);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/catalogo.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/catalogo.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -14149,28 +14096,27 @@ function catalogo() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/Container.js");
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/GeneralLayout.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/GeneralLayout.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
- // Layout general de las pantallas
 
+// Layout general de las pantallas
 var Layout = function Layout(props) {
   return __jsx("div", {
+    className: "mb-0",
     style: {
       background: "#00aeef99"
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 5
+      lineNumber: 4
     },
     __self: this
-  }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    className: "justify-content-center pt-4 col-8 col-md-10 col-lg-11 col-xl-9 bg-light",
+  }, __jsx("div", {
+    className: "container justify-content-center pt-4 col-8 col-md-10 col-lg-11 col-xl-10 bg-light",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 5
     },
     __self: this
   }, props.children));
@@ -14213,7 +14159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/Navigation.jsx";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Navigation.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
 // npm install react-bootstrap bootstrap
 
@@ -14243,7 +14189,7 @@ function (_Component) {
         collapseOnSelect: "collapseOnSelect",
         expand: "md",
         style: {
-          background: "#F05261"
+          background: "#f5616f"
         }
         /* bg="light" variant="light"*/
         ,
@@ -14349,7 +14295,7 @@ function (_Component) {
         src: __webpack_require__(/*! ../resources/logo-1.png */ "./pages/resources/logo-1.png"),
         style: {
           cursor: 'pointer',
-          height: "75px"
+          height: "40px"
         },
         fluid: true,
         __source: {
@@ -14460,7 +14406,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../style/timeline-style.css */ "./pages/style/timeline-style.css");
 /* harmony import */ var _style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_style_timeline_style_css__WEBPACK_IMPORTED_MODULE_4__);
-var _jsxFileName = "/home/est/2013/ebosques/Documents/AP/zona-recreativa-web/pages/components/Package.js";
+var _jsxFileName = "/home/nano/Documents/AdmProyecto/zona-recreativa-web/pages/components/Package.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -14480,7 +14426,7 @@ function cutMsg(msg) {
 
 var Package = function Package(props) {
   return __jsx("div", {
-    className: "card mb-3 col-lg-8 col-12 mx-auto",
+    className: "card mb-3 col-lg-10 col-12 mx-auto",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 20
@@ -14502,7 +14448,7 @@ var Package = function Package(props) {
     __self: this
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_3___default.a, {
     href: "/pPackage/[infoPkg]",
-    as: "/pPackage/".concat(props.title),
+    as: "/pPackage/".concat(props.uid),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 23
@@ -14601,7 +14547,6 @@ var map = {
 	"./f.jpg": "./pages/resources/f.jpg",
 	"./logo-1.png": "./pages/resources/logo-1.png",
 	"./logo.png": "./pages/resources/logo.png",
-	"./logo.svg": "./pages/resources/logo.svg",
 	"./logo.xcf": "./pages/resources/logo.xcf",
 	"./map.jpg": "./pages/resources/map.jpg"
 };
@@ -14716,17 +14661,6 @@ module.exports = "/_next/static/images/logo-d054157807200014d7f6baf8789694df.png
 
 /***/ }),
 
-/***/ "./pages/resources/logo.svg":
-/*!**********************************!*\
-  !*** ./pages/resources/logo.svg ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/_next/static/images/logo-9e515ff7d9b2dfd87e03dff1527b5660.svg";
-
-/***/ }),
-
 /***/ "./pages/resources/logo.xcf":
 /*!**********************************!*\
   !*** ./pages/resources/logo.xcf ***!
@@ -14749,28 +14683,28 @@ module.exports = "/_next/static/images/map-3b067279b1abbdccace96fe4be818d73.jpg"
 
 /***/ }),
 
-/***/ 2:
-/*!*********************************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fest%2F2013%2Febosques%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
-  \*********************************************************************************************************************************************************************/
+/***/ 3:
+/*!*************************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js ***!
+  \*************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fest%2F2013%2Febosques%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fest%2F2013%2Febosques%2FDocuments%2FAP%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fcatalogo&absolutePagePath=%2Fhome%2Fnano%2FDocuments%2FAdmProyecto%2Fzona-recreativa-web%2Fpages%2Fcatalogo.js!./");
 
 
 /***/ }),
 
-/***/ "dll-reference dll_01f9a3fa864a7b7414d8":
+/***/ "dll-reference dll_129a35c7ec57967eb265":
 /*!*******************************************!*\
-  !*** external "dll_01f9a3fa864a7b7414d8" ***!
+  !*** external "dll_129a35c7ec57967eb265" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_01f9a3fa864a7b7414d8;
+module.exports = dll_129a35c7ec57967eb265;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js","styles"]]]);
+},[[3,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=catalogo.js.map
