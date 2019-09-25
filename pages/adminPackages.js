@@ -1,132 +1,258 @@
 import Layout from './components/GeneralLayout';
 import Navigation from './components/Navigation';
+import AdminTable from './components/AdminTable';
+import AdminTableItem from './components/AdminTableItem';
+import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import Toast from 'react-bootstrap/Toast'
 import { Formik, Field } from 'formik';
+import AddIcon from '@material-ui/icons/Add';
 
-const InputField = ({
-    field,
-    form: _,
-    ...props
-    }) => {
-    return (
-        <div>
-            <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
-        </div>
-    );
-};
+import React, { Component } from 'react';
 
-const SelectField = ({
-    field,
-    form: _,
-    ...props
-    }) => {
-    return (
-        <div>
-            <select style={{marginTop:20, marginBottom:10 , padding:10}} {...field} {...props}/>
-        </div>
-    );
-};
+class AdminPackages extends Component {
 
-export default function adminPackages ()
-{       return(
-        <div>
-            <Navigation />
-            <Layout>
-                <div className="row justify-content-center">
-                    <h1 className="mt-2 mb-4">
-                        Administración paquetes
-                    </h1>
-                </div>
-            </Layout>
-            <br></br>
-            <div className="package-admin-table">
-            <table style={{width:"99%", textAlign:"center", fontSize:'17px', marginBottom:"50px"}}>
-                <tr>
-                    <th>Nombre Paquete</th>
-                    <th>Precio</th>
-                    <th>Hora inicio</th>
-                    <th>Hora final</th>
-                    <th>Capacidad</th>
-                    <th>Tipo de ruta</th>
-                    <th>Tipo de geografía</th>
-                </tr>
-                <tr>
-                    <td>Paquete 1</td>
-                    <td>1000¢</td>
-                    <td>7:30</td>
-                    <td>13:00</td>
-                    <td>250</td>
-                    <td>Educativa</td>
-                    <td>A</td>
-                </tr>
-                <tr>
-                    <td>Paquete 2</td>
-                    <td>1000¢</td>
-                    <td>8:00</td>
-                    <td>12:30</td>
-                    <td>300</td>
-                    <td>Educativa</td>
-                    <td>P</td>
-                </tr>
-            </table>
+    constructor ()
+    {
+        super();
+
+        //inicializa state
+        this.state = {
+            nombrePaquete: '',
+            precioPaquete: '',
+            horaInicio: '',
+            horaFinal: '',
+            capacidadPaquete: '',
+            tipoRuta: '',
+            tipoGeografia: '',
+            showModal: false,
+            showMessage: false,
+            editId: -1,
+            items: []
+        };
+
+        //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.addPackage = this.addPackage.bind(this);
+        this.editPackage = this.editPackage.bind(this);
+        this.deletePackage = this.deletePackage.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+    }
+
+    InputField = ({
+        field,
+        form: _,
+        ...props
+        }) => {
+        return (
+            <div>
+                <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
             </div>
-            <div className="package-admin-group" style={{textAlign: 'center'}}>
-                <Formik  onSubmit={(data)=>{console.log(data)}}
-                    initialValues = {{
-                        nombrePaquete: "",
-                        precioPaquete: "",
-                        horaInicio: "",
-                        horaFinal: "",
-                        capacidadPaquete: "",
-                        tipoRuta: "",
-                        tipoGeografia: "",
-                        accionPaquete: "Crear"
-                    }}>
-                        {({handleSubmit}) =>  
-                        <form onSubmit={handleSubmit}>
-                            <Field name="nombrePaquete" placeholder="Nombre del paquete" component={InputField}/>
-                            <Field name="precioPaquete" placeholder="Precio del paquete" component={InputField}/>
-                            <Field name="horaInicio" placeholder="Hora de Inicio" component={InputField}/>
-                            <Field name="horaFinal" placeholder="Hora Final" component={InputField}/>
-                            <Field name="capacidadPaquete" placeholder="Capacidad de paquete" component={InputField}/>
-                            <Field name="tipoRuta" placeholder="Tipo de ruta" component={InputField}/>
-                            <Field name="tipoGeografia" placeholder="Tipo de geografía" component={InputField}/>
-                            <div>
-                                <Field component={SelectField} name="accionPaquete" >
-                                    <option name="crearPaquete">Crear</option>
-                                    <option name="eliiminarPaquete">Eliminar</option>
-                                    <option name="actualizarPaquete">Actualizar</option>
-                                </Field>
+        );
+    };
+
+    addPackage(e)
+    {
+        this.setState({
+            showModal: true,
+            editId: -1
+        });
+    }
+
+    editPackage(id)
+    {
+        this.setState({
+            nombrePaquete: this.state.items[id][0],
+            precioPaquete: this.state.items[id][1],
+            horaInicio: this.state.items[id][2],
+            horaFinal: this.state.items[id][3],
+            capacidadPaquete: this.state.items[id][4],
+            tipoRuta: this.state.items[id][5],
+            tipoGeografia: this.state.items[id][6],
+            showModal: true,
+            editId: id
+        });
+    }
+
+    deletePackage(id)
+    {
+        this.state.items.pop(id);
+
+        this.setState({
+            showMessage: true,
+            message: 'Paquete eliminado'
+        });
+    }
+
+    handleSubmit(e)
+    {
+        e.preventDefault();
+
+        //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
+        let message = 'Paquete agregado';
+        if (this.state.editId === -1) {
+            this.state.items.push([
+                this.state.nombrePaquete,
+                this.state.precioPaquete,
+                this.state.horaInicio,
+                this.state.horaFinal,
+                this.state.capacidadPaquete,
+                this.state.tipoRuta,
+                this.state.tipoGeografia]);
+        } else {
+            this.state.items[this.state.editId] = [
+                this.state.nombrePaquete,
+                this.state.precioPaquete,
+                this.state.horaInicio,
+                this.state.horaFinal,
+                this.state.capacidadPaquete,
+                this.state.tipoRuta,
+                this.state.tipoGeografia];
+            message = 'Cambios guardados';
+        }
+        //console.log(this.state);
+
+        //Reincia los inputs
+        this.setState({
+            nombrePaquete: '',
+            precioPaquete: '',
+            horaInicio: '',
+            horaFinal: '',
+            capacidadPaquete: '',
+            tipoRuta: '',
+            tipoGeografia: '',
+            showModal: false,
+            showMessage: true,
+            message: message
+        });
+    }
+
+    handleClose(e)
+    {
+        //Reincia los inputs
+        this.setState({
+            nombrePaquete: '',
+            precioPaquete: '',
+            horaInicio: '',
+            horaFinal: '',
+            capacidadPaquete: '',
+            tipoRuta: '',
+            tipoGeografia: '',
+            showModal: false
+        });
+    }
+
+    //Actualiza los valores cada vez que se hace un cambio en el input
+    handleInputChange(e)
+    {
+        //obtiene el valor y el nombre del componente que cambio
+        const {value, name} = e.target;
+        // console.log(value, name);
+
+        // Actualiza el campo que se modifico
+        this.setState({
+            [name]: value
+        });
+    }
+
+    render()
+    {
+        return(
+            <div>
+                <Navigation />
+                <Layout>
+                    <div className="row justify-content-center">
+                        <h1 className="mt-2 mb-4">
+                            Administración paquetes
+                        </h1>
+                    </div>
+
+                    <div className="row justify-content-end pr-3">
+                        <a onClick={this.addPackage}><AddIcon /></a>
+                    </div>
+                    <div className="package-admin-table">
+                        <AdminTable headers={['Nombre Paquete','Precio','Hora inicio','Hora final','Capacidad','Tipo de ruta','Tipo de geografía']}>
+                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editPackage} onDelete={this.deletePackage} />)}
+                        </AdminTable>
+                    </div>
+
+                    <Modal show={this.state.showModal} onHide={this.handleClose} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="package-admin-group" style={{textAlign: 'center'}}>
+                                <Formik  onSubmit={(data)=>{console.log(data)}}
+                                    initialValues = {{
+                                    nombrePaquete: "",
+                                    precioPaquete: "",
+                                    horaInicio: "",
+                                    horaFinal: "",
+                                    capacidadPaquete: "",
+                                    tipoRuta: "",
+                                    tipoGeografia: "" }}>
+                                    {({handleSubmit}) =>
+                                        <Form onSubmit={handleSubmit}>
+                                            <Field name="nombrePaquete" placeholder="Nombre del paquete" component={this.InputField} className="form-control" value={this.state.nombrePaquete}  onChange={this.handleInputChange} />
+                                            <Field name="precioPaquete" placeholder="Precio del paquete" component={this.InputField} className="form-control" value={this.state.precioPaquete}  onChange={this.handleInputChange} />
+                                            <Field name="horaInicio" placeholder="Hora de Inicio" component={this.InputField} className="form-control" value={this.state.horaInicio}  onChange={this.handleInputChange} />
+                                            <Field name="horaFinal" placeholder="Hora Final" component={this.InputField} className="form-control" value={this.state.horaFinal}  onChange={this.handleInputChange} />
+                                            <Field name="capacidadPaquete" placeholder="Capacidad de paquete" component={this.InputField} className="form-control" value={this.state.capacidadPaquete}  onChange={this.handleInputChange} />
+                                            <Field name="tipoRuta" placeholder="Tipo de ruta" component={this.InputField}  className="form-control" value={this.state.tipoRuta}  onChange={this.handleInputChange} />
+                                            <Field name="tipoGeografia" placeholder="Tipo de geografía" component={this.InputField}  className="form-control" value={this.state.tipoGeografia}  onChange={this.handleInputChange} />
+                                        </Form>
+                                    }
+                                </Formik>
+                                <style jsx>{`
+                                    .package-admin-group button {
+                                        position: relative;
+                                        border:0.1em solid #42c8f5;
+                                        font-size: 15px;
+                                        background-color: black;
+                                        color: white;
+                                        padding: 1em 2em;
+                                        box-sizing: border-box;
+                                        text-decoration:none;
+                                        margin-top: 25px;
+                                        text-align: center;
+                                        transition: all 0.2s;
+                                    }
+
+                                    .package-admin-group button:hover {
+                                        color: #000000;
+                                        background-color: #42c8f5;
+                                    }
+                                `}</style>
                             </div>
-                            <div className="form-buttns" style={{textAlign: 'center'}}>
-                                <button type="submit">Enviar</button>
-                            </div>
-                            <br></br>
-                        </form>  }
-    
-                </Formik>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="light" onClick={this.handleClose}>
+                                Cancelar
+                            </Button>
+                            <Button variant="dark" onClick={this.handleSubmit}>
+                                Enviar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </Layout>
 
-                <style jsx>{`
+                <Toast style={{
+                        position: 'absolute',
+                        top: 80,
+                        right: 10,}}
+                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
+                    <Toast.Header>
+                        <strong className="mr-auto"></strong>
+                    </Toast.Header>
+                    <Toast.Body>{this.state.message}</Toast.Body>
+                </Toast>
 
-                .package-admin-group button {
-                    position: relative;
-                    border:0.1em solid #42c8f5;
-                    font-size: 15px;
-                    background-color: black;
-                    color: white;
-                    padding: 1em 2em;
-                    box-sizing: border-box;
-                    text-decoration:none;
-                    margin-top: 25px;
-                    text-align: center;
-                    transition: all 0.2s;
-                }
-
-                .package-admin-group button:hover {
-                    color: #000000;
-                    background-color: #42c8f5;
-                }
-                `}</style>
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+export default AdminPackages;

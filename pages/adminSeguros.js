@@ -57,7 +57,7 @@ export default function adminSeguros ()
             </table>
             </div>
             <div className="sL-admin-group" style={{textAlign: 'center'}}>
-                <Formik  onSubmit={(data)=>{console.log(data)}}
+                <Formik  onSubmit={(data)=>{alert(JSON.stringify(data))}}
                     initialValues = {{
                         nombrePersona: "",
                         cedulaPersona: "",

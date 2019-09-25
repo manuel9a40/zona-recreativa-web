@@ -88,7 +88,7 @@ class Proveedores extends Component {
                         { /*
                             Formulario de proveedores (Izquierda)
                         */ }
-                        <form className="" onSubmit={this.handleSubmit}>
+                        <Form className="" onSubmit={this.handleSubmit}>
                             <div className="row">
                                 {/*
                                     El form control tiene que tener un nombre igual a un atributo de la variable state. Cambiar el value={this.state.email} al atributo correspondiente. Hacerlo para cada input.
@@ -178,7 +178,7 @@ class Proveedores extends Component {
                             <Button className="mt-4" variant="dark" type="submit">
                                 Enviar
                             </Button>
-                        </form>
+                        </Form>
                     </div>
                 </Layout>
             </div>
