@@ -8,7 +8,7 @@ class AdminTable extends Component {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        {this.props.headers.map(item => <th>{item}</th>)}
+                        {this.props.headers!=undefined && this.props.headers.map(item => <th>{item}</th>)}
                         <th>{/* Acciones */}</th>
                     </tr>
                 </thead>

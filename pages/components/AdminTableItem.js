@@ -27,7 +27,7 @@ class AdminTableItem extends Component {
     render() {
         return(
             <tr>
-                {this.props.items.map(data => <td>{data}</td>)}
+                {this.props.items!=undefined && this.props.items.map(data => <td>{data}</td>)}
                 <td>
                 <a onClick={() => typeof this.props.onEdit==='function' && this.props.onEdit(this.props.id)}><EditIcon /></a>
                 <OverlayTrigger
