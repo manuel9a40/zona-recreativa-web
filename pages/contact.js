@@ -1,6 +1,8 @@
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
+import EmailIcon from '@material-ui/icons/Email';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 import Navigation from './components/Navigation'
 import Layout from './components/GeneralLayout'
@@ -98,8 +100,10 @@ class Proveedores extends Component {
                                     <h6>Zona Recreativa CR</h6>
 
                                     <p className="text-secondary">
+                                        <EmailIcon fontSize='small' />
                                         acme.info@2mail.com
                                         <br/>
+                                        <PhoneIcon fontSize='small' />
                                         +0 000-000-0000
                                     </p>
                                     { /*<p className="text-secondary">

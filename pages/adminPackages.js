@@ -184,7 +184,7 @@ class AdminPackages extends Component {
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <div className="package-admin-group" style={{textAlign: 'center'}}>
+                            <div className="" style={{textAlign: 'center'}}>
                                 <Formik  onSubmit={(data)=>{console.log(data)}}
                                     initialValues = {{
                                     nombrePaquete: "",
@@ -206,26 +206,6 @@ class AdminPackages extends Component {
                                         </Form>
                                     }
                                 </Formik>
-                                <style jsx>{`
-                                    .package-admin-group button {
-                                        position: relative;
-                                        border:0.1em solid #42c8f5;
-                                        font-size: 15px;
-                                        background-color: black;
-                                        color: white;
-                                        padding: 1em 2em;
-                                        box-sizing: border-box;
-                                        text-decoration:none;
-                                        margin-top: 25px;
-                                        text-align: center;
-                                        transition: all 0.2s;
-                                    }
-
-                                    .package-admin-group button:hover {
-                                        color: #000000;
-                                        background-color: #42c8f5;
-                                    }
-                                `}</style>
                             </div>
                         </Modal.Body>
                         <Modal.Footer>

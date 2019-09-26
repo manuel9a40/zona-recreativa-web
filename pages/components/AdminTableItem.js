@@ -35,7 +35,7 @@ class AdminTableItem extends Component {
                     trigger='click'
                     overlay={
                         <Tooltip id={this.props.id}>
-                            <Button variant='dark' onClick={this.onDelete} >Eliminar</Button>
+                            <a onClick={this.onDelete} >Eliminar</a>
                         </Tooltip>
                     }
                 >
