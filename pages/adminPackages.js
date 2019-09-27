@@ -1,5 +1,5 @@
 import Layout from './components/GeneralLayout';
-import Navigation from './components/Navigation';
+import AdminNavigation from './components/AdminNavigation';
 import AdminTable from './components/AdminTable';
 import AdminTableItem from './components/AdminTableItem';
 import Button from 'react-bootstrap/Button'
@@ -162,7 +162,7 @@ class AdminPackages extends Component {
     {
         return(
             <div>
-                <Navigation />
+                <AdminNavigation />
                 <Layout>
                     <div className="row justify-content-center">
                         <h1 className="mt-2 mb-4">
