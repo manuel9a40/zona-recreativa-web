@@ -14,7 +14,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 import React, { Component } from 'react';
 
-class AdminPackages extends Component {
+class AdminPlanesAlimenticios extends Component {
 
     constructor ()
     {
@@ -22,13 +22,8 @@ class AdminPackages extends Component {
 
         //inicializa state
         this.state = {
-            nombrePaquete: '',
-            precioPaquete: '',
-            horaInicio: '',
-            horaFinal: '',
-            capacidadPaquete: '',
-            tipoRuta: '',
-            tipoGeografia: '',
+            nombrePlan: '',
+            comidas: '',
             showModal: false,
             showMessage: false,
             editId: -1,
@@ -37,9 +32,9 @@ class AdminPackages extends Component {
 
         //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.addPackage = this.addPackage.bind(this);
-        this.editPackage = this.editPackage.bind(this);
-        this.deletePackage = this.deletePackage.bind(this);
+        this.addPlanAlimenticio = this.addPlanAlimenticio.bind(this);
+        this.editPlanAlimenticio = this.editPlanAlimenticio.bind(this);
+        this.deletePlanAlimenticio = this.deletePlanAlimenticio.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
     }
@@ -56,7 +51,7 @@ class AdminPackages extends Component {
         );
     };
 
-    addPackage(e)
+    addPlanAlimenticio(e)
     {
         this.setState({
             showModal: true,
@@ -64,28 +59,23 @@ class AdminPackages extends Component {
         });
     }
 
-    editPackage(id)
+    editPlanAlimenticio(id)
     {
         this.setState({
-            nombrePaquete: this.state.items[id][0],
-            precioPaquete: this.state.items[id][1],
-            horaInicio: this.state.items[id][2],
-            horaFinal: this.state.items[id][3],
-            capacidadPaquete: this.state.items[id][4],
-            tipoRuta: this.state.items[id][5],
-            tipoGeografia: this.state.items[id][6],
+            nombrePlan: this.state.items[id][0],
+            comidas: this.state.items[id][1],
             showModal: true,
             editId: id
         });
     }
 
-    deletePackage(id)
+    deletePlanAlimenticio(id)
     {
         this.state.items.pop(id);
 
         this.setState({
             showMessage: true,
-            message: 'Paquete eliminado'
+            message: 'Plan alimenticio eliminado'
         });
     }
 
@@ -94,38 +84,23 @@ class AdminPackages extends Component {
         e.preventDefault();
 
         //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
-        let message = 'Paquete agregado';
+        let message = 'Plan alimenticio agregado';
         if (this.state.editId === -1) {
             this.state.items.push([
-                this.state.nombrePaquete,
-                this.state.precioPaquete,
-                this.state.horaInicio,
-                this.state.horaFinal,
-                this.state.capacidadPaquete,
-                this.state.tipoRuta,
-                this.state.tipoGeografia]);
+                this.state.nombrePlan,
+                this.state.comidas]);
         } else {
             this.state.items[this.state.editId] = [
-                this.state.nombrePaquete,
-                this.state.precioPaquete,
-                this.state.horaInicio,
-                this.state.horaFinal,
-                this.state.capacidadPaquete,
-                this.state.tipoRuta,
-                this.state.tipoGeografia];
+                this.state.nombrePlan,
+                this.state.comidas];
             message = 'Cambios guardados';
         }
         //console.log(this.state);
 
         //Reincia los inputs
         this.setState({
-            nombrePaquete: '',
-            precioPaquete: '',
-            horaInicio: '',
-            horaFinal: '',
-            capacidadPaquete: '',
-            tipoRuta: '',
-            tipoGeografia: '',
+            nombrePlan: '',
+            comidas: '',
             showModal: false,
             showMessage: true,
             message: message
@@ -136,13 +111,8 @@ class AdminPackages extends Component {
     {
         //Reincia los inputs
         this.setState({
-            nombrePaquete: '',
-            precioPaquete: '',
-            horaInicio: '',
-            horaFinal: '',
-            capacidadPaquete: '',
-            tipoRuta: '',
-            tipoGeografia: '',
+            nombrePlan: '',
+            comidas: '',
             showModal: false
         });
     }
@@ -168,13 +138,13 @@ class AdminPackages extends Component {
                 <Layout>
                     <div className="row justify-content-center">
                         <h1 className="mt-2 mb-4">
-                            Administración paquetes
+                            Administración de planes alimenticios
                         </h1>
                     </div>
 
                     <div className="package-admin-table">
-                        <AdminTable headers={['Nombre paquete','Precio','Hora inicio','Hora final','Capacidad','Tipo de ruta','Tipo de geografía']}>
-                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editPackage} onDelete={this.deletePackage} />)}
+                        <AdminTable headers={['Nombre del plan','Comidas']}>
+                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editPlanAlimenticio} onDelete={this.deletePlanAlimenticio} />)}
                         </AdminTable>
                     </div>
 
@@ -186,22 +156,12 @@ class AdminPackages extends Component {
                             <div className="" style={{textAlign: 'center'}}>
                                 <Formik  onSubmit={(data)=>{console.log(data)}}
                                     initialValues = {{
-                                    nombrePaquete: "",
-                                    precioPaquete: "",
-                                    horaInicio: "",
-                                    horaFinal: "",
-                                    capacidadPaquete: "",
-                                    tipoRuta: "",
-                                    tipoGeografia: "" }}>
+                                    nombrePlan: "",
+                                    comidas: "" }}>
                                     {({handleSubmit}) =>
                                         <Form onSubmit={handleSubmit}>
-                                            <Field name="nombrePaquete" placeholder="Nombre del paquete" component={this.InputField} className="form-control" value={this.state.nombrePaquete}  onChange={this.handleInputChange} />
-                                            <Field name="precioPaquete" placeholder="Precio del paquete" component={this.InputField} className="form-control" value={this.state.precioPaquete}  onChange={this.handleInputChange} />
-                                            <Field name="horaInicio" placeholder="Hora de inicio" component={this.InputField} className="form-control" value={this.state.horaInicio}  onChange={this.handleInputChange} />
-                                            <Field name="horaFinal" placeholder="Hora final" component={this.InputField} className="form-control" value={this.state.horaFinal}  onChange={this.handleInputChange} />
-                                            <Field name="capacidadPaquete" placeholder="Capacidad de paquete" component={this.InputField} className="form-control" value={this.state.capacidadPaquete}  onChange={this.handleInputChange} />
-                                            <Field name="tipoRuta" placeholder="Tipo de ruta" component={this.InputField}  className="form-control" value={this.state.tipoRuta}  onChange={this.handleInputChange} />
-                                            <Field name="tipoGeografia" placeholder="Tipo de geografía" component={this.InputField}  className="form-control" value={this.state.tipoGeografia}  onChange={this.handleInputChange} />
+                                            <Field name="nombrePlan" placeholder="Nombre del plan" component={this.InputField} className="form-control" value={this.state.nombrePlan}  onChange={this.handleInputChange} />
+                                            <Field name="comidas" placeholder="Comidas" component={this.InputField} className="form-control" value={this.state.comidas}  onChange={this.handleInputChange} />
                                         </Form>
                                     }
                                 </Formik>
@@ -232,7 +192,7 @@ class AdminPackages extends Component {
                 <Fab color="primary" aria-label="add" style={{
                         position: 'absolute',
                         bottom: 15,
-                        right: 15,}} onClick={this.addPackage}>
+                        right: 15,}} onClick={this.addPlanAlimenticio}>
                     <AddIcon />
                 </Fab>
 
@@ -241,4 +201,4 @@ class AdminPackages extends Component {
     }
 }
 
-export default AdminPackages;
+export default AdminPlanesAlimenticios;

@@ -1,108 +1,212 @@
 import Layout from './components/GeneralLayout';
-import Navigation from './components/Navigation';
+import AdminNavigation from './components/AdminNavigation';
+import AdminTable from './components/AdminTable';
+import AdminTableItem from './components/AdminTableItem';
+import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
+import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+import Toast from 'react-bootstrap/Toast'
 import { Formik, Field } from 'formik';
+import AddIcon from '@material-ui/icons/Add';
+import Fab from '@material-ui/core/Fab';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const InputField = ({
-    field,
-    form: _,
-    ...props
-    }) => {
-    return (
-        <div>
-            <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
-        </div>
-    );
-};
+import React, { Component } from 'react';
 
-const SelectField = ({
-    field,
-    form: _,
-    ...props
-    }) => {
-    return (
-        <div>
-            <select style={{marginTop:20, marginBottom:10 , padding:10}} {...field} {...props}/>
-        </div>
-    );
-};
+class AdminSeguros extends Component {
 
-export default function adminSeguros ()
-{       return(
-        <div>
-            <Navigation />
-            <Layout>
-                <div className="row justify-content-center">
-                    <h1 className="mt-2 mb-4">
-                        Administración de seguros laborales
-                    </h1>
-                </div>
-            </Layout>
-            <div className="package-admin-table" style={{textAlign: 'center'}}>
-            <table class="center" style={{width:"25%" ,textAlign:"center", fontSize:'17px', marginBottom:"50px", marginLeft: "auto", marginRight: "auto"}}>
-                <tr>
-                    <th>Nombre de la persona</th>
-                    <th>Cédula de la persona</th>
-                    <th>Número de seguro</th>
-                </tr>
-                <tr>
-                    <td>Persona 1</td>
-                    <td>123456</td>
-                    <td>123456</td>
-                </tr>
-                <tr>
-                    <td>Persona 2</td>
-                    <td>654321</td>
-                    <td>654321</td>
-                </tr>
-            </table>
+    constructor ()
+    {
+        super();
+
+        //inicializa state
+        this.state = {
+            nombrePersona: '',
+            cedulaPersona: '',
+            numeroSeguro: '',
+            showModal: false,
+            showMessage: false,
+            editId: -1,
+            items: []
+        };
+
+        //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.addSeguro = this.addSeguro.bind(this);
+        this.editSeguro = this.editSeguro.bind(this);
+        this.deleteSeguro = this.deleteSeguro.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClose = this.handleClose.bind(this);
+    }
+
+    InputField = ({
+        field,
+        form: _,
+        ...props
+        }) => {
+        return (
+            <div>
+                <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
             </div>
-            <div className="sL-admin-group" style={{textAlign: 'center'}}>
-                <Formik  onSubmit={(data)=>{alert(JSON.stringify(data))}}
-                    initialValues = {{
-                        nombrePersona: "",
-                        cedulaPersona: "",
-                        numeroSeguro: "",
-                        accionSeguro: "Crear"
-                    }}>
-                        {({handleSubmit}) =>  
-                        <form onSubmit={handleSubmit}>
-                            <Field name="nombrePersona" placeholder="Nombre de la persona" component={InputField}/>
-                            <Field name="cedulaPersona" placeholder="Cédula de la persona" component={InputField}/>
-                            <Field name="numeroSeguro" placeholder="Número de seguro" component={InputField}/>
-                            <Field component={SelectField} name="accionSeguro" >
-                                    <option name="crearSeguro">Crear</option>
-                                    <option name="eliiminarSeguro">Eliminar</option>
-                                    <option name="actualizarSeguro">Actualizar</option>
-                            </Field>
-                            <div className="form-buttns" style={{textAlign: 'center'}}>
-                                <button type="submit">Enviar</button>
+        );
+    };
+
+    addSeguro(e)
+    {
+        this.setState({
+            showModal: true,
+            editId: -1
+        });
+    }
+
+    editSeguro(id)
+    {
+        this.setState({
+            nombrePersona: this.state.items[id][0],
+            cedulaPersona: this.state.items[id][1],
+            numeroSeguro: this.state.items[id][2],
+            showModal: true,
+            editId: id
+        });
+    }
+
+    deleteSeguro(id)
+    {
+        this.state.items.pop(id);
+
+        this.setState({
+            showMessage: true,
+            message: 'Seguro eliminado'
+        });
+    }
+
+    handleSubmit(e)
+    {
+        e.preventDefault();
+
+        //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
+        let message = 'Seguro agregado';
+        if (this.state.editId === -1) {
+            this.state.items.push([
+                this.state.nombrePersona,
+                this.state.cedulaPersona,
+                this.state.numeroSeguro]);
+        } else {
+            this.state.items[this.state.editId] = [
+                this.state.nombrePersona,
+                this.state.cedulaPersona,
+                this.state.numeroSeguro];
+            message = 'Cambios guardados';
+        }
+        //console.log(this.state);
+
+        //Reincia los inputs
+        this.setState({
+            nombrePersona: '',
+            cedulaPersona: '',
+            numeroSeguro: '',
+            showModal: false,
+            showMessage: true,
+            message: message
+        });
+    }
+
+    handleClose(e)
+    {
+        //Reincia los inputs
+        this.setState({
+            nombrePersona: '',
+            cedulaPersona: '',
+            numeroSeguro: '',
+            showModal: false
+        });
+    }
+
+    //Actualiza los valores cada vez que se hace un cambio en el input
+    handleInputChange(e)
+    {
+        //obtiene el valor y el nombre del componente que cambio
+        const {value, name} = e.target;
+        // console.log(value, name);
+
+        // Actualiza el campo que se modifico
+        this.setState({
+            [name]: value
+        });
+    }
+
+    render()
+    {
+        return(
+            <div>
+                <AdminNavigation />
+                <Layout>
+                    <div className="row justify-content-center">
+                        <h1 className="mt-2 mb-4">
+                            Administración de seguros laborales
+                        </h1>
+                    </div>
+
+                    <div className="package-admin-table">
+                        <AdminTable headers={['Nombre de la persona','Cédula de la persona','Número de seguro']}>
+                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editSeguro} onDelete={this.deleteSeguro} />)}
+                        </AdminTable>
+                    </div>
+
+                    <Modal show={this.state.showModal} onHide={this.handleClose} centered>
+                        <Modal.Header closeButton>
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="" style={{textAlign: 'center'}}>
+                                <Formik  onSubmit={(data)=>{console.log(data)}}
+                                    initialValues = {{
+                                    nombrePersona: "",
+                                    cedulaPersona: "",
+                                    numeroSeguro: "" }}>
+                                    {({handleSubmit}) =>
+                                        <Form onSubmit={handleSubmit}>
+                                            <Field name="nombrePersona" placeholder="Nombre de la persona" component={this.InputField} className="form-control" value={this.state.nombrePersona}  onChange={this.handleInputChange} />
+                                            <Field name="cedulaPersona" placeholder="Cédula de la persona" component={this.InputField} className="form-control" value={this.state.cedulaPersona}  onChange={this.handleInputChange} />
+                                            <Field name="numeroSeguro" placeholder="Número de seguro" component={this.InputField} className="form-control" value={this.state.numeroSeguro}  onChange={this.handleInputChange} />
+                                        </Form>
+                                    }
+                                </Formik>
                             </div>
-                        </form>  }
-    
-                </Formik>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="light" onClick={this.handleClose}>
+                                Cancelar
+                            </Button>
+                            <Button variant="dark" onClick={this.handleSubmit}>
+                                Enviar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </Layout>
 
-                <style jsx>{`
+                <Toast style={{
+                        position: 'absolute',
+                        top: 80,
+                        right: 10,}}
+                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
+                    <Toast.Header>
+                        <strong className="mr-auto"></strong>
+                    </Toast.Header>
+                    <Toast.Body>{this.state.message}</Toast.Body>
+                </Toast>
 
-                .sL-admin-group button {
-                    position: relative;
-                    border:0.1em solid #42c8f5;
-                    font-size: 15px;
-                    background-color: black;
-                    color: white;
-                    padding: 1em 2em;
-                    box-sizing: border-box;
-                    text-decoration:none;
-                    margin-top: 25px;
-                    text-align: center;
-                    transition: all 0.2s;
-                }
+                <Fab color="primary" aria-label="add" style={{
+                        position: 'absolute',
+                        bottom: 15,
+                        right: 15,}} onClick={this.addSeguro}>
+                    <AddIcon />
+                </Fab>
 
-                .sL-admin-group button:hover {
-                    color: #000000;
-                    background-color: #42c8f5;
-                }
-                `}</style>
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+export default AdminSeguros;

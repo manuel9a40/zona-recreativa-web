@@ -54,12 +54,12 @@ class AdminNavigation extends Component {
                             Administrar seguros laborales
                         </a>
                     </Link>
-                    <Link href="/adminPlanesA">
+                    <Link href="/adminPlanesAlimenticios">
                         <a className="nav-link px-xl-3 px-lg-2 px-sm-2 mx-md-2 text-light font-weight-bold">
                             Administrar planes alimenticios
                         </a>
                     </Link>
-                    <Link href="/adminPersonalM">
+                    <Link href="/adminPersonalMedico">
                         <a className="nav-link px-xl-3 px-lg-2 px-md-2 mx-sm-2 text-light font-weight-bold">
                             Administrar personal médico
                         </a>
