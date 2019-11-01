@@ -7,11 +7,29 @@ import Link from 'next/link';
 import Router from 'next/router'
 import '../style/fullPage.css'
 
+
+import { initFirebase } from '../../lib/firebase'
+
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+// import * as firebase from "firebase/app";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+
+var fire;
+
 class AdminNavigation extends Component {
 
     constructor ()
     {
         super();
+
+        var prom =  new Promise((resolve, reject) =>
+        {
+            fire = initFirebase()
+            resolve()
+        })
+
 
         //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
         this.endSession = this.endSession.bind(this);
@@ -19,7 +37,14 @@ class AdminNavigation extends Component {
 
     endSession()
     {
-        Router.push('/');
+
+        fire.auth().signOut().then(function() {
+            // Sign-out successful.
+            Router.push('/');
+        }).catch(function(error) {
+            console.log(error)
+            // An error happened.
+        });
     }
 
     render() {
@@ -27,53 +52,52 @@ class AdminNavigation extends Component {
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse className="justify-content-between" id="responsive-navbar-nav">
                 {/*
-
-                Logotipo que va en el centro
-
+                Logotipo que va en el centro ¡¡¡digo a la izquierda!!!
                  */
                 }
-                <Navbar.Brand className="d-none d-md-block col-xs-1 col-md-1 ml-5">
+                <Navbar.Brand className="d-none d-md-block col-xl-2 col-2 ml-lg-5 ml-0 mr-0 px-0">
                     <Link href="/adminMain">
-                        <Image className="d-none d-md-block " src="https://firebasestorage.googleapis.com/v0/b/zona-recreativa-cr.appspot.com/o/res%2Flogo-1.png?alt=media&token=75578cc4-3f13-4a93-88ea-e84c6a2b8216"  style={{cursor:'pointer', height: "40px" }} fluid/>
+                        <Image className="" src="https://firebasestorage.googleapis.com/v0/b/zona-recreativa-cr.appspot.com/o/res%2Flogo-2.png?alt=media&token=5af0e6da-07e4-490e-8d61-bebc7b456ce3"  style={{cursor:'pointer', height: "40px" }} fluid/>
                     </Link>
                 </Navbar.Brand>
                 {/*
-
                 Primera seccion de la barra de navegacion. Incluye Catalogo, Galeria e Informacion
-
                  */
                 }
-                <Nav className="pl-xl-5 pl-lg-4 pl-md-2 pl-sm-3 pl-4 col-xs-2">
+                <Nav className="pl-xl-5 pl-lg-4 pl-md-0 pl-4 col-xl-9 col-lg-9 col-10 pr-0">
+                    <Link href="/adminMain">
+                        <a className="nav-link px-xl-3 px-lg-2 px-sm-0 mx-md-2 d-sm-none text-light font-weight-bold">
+                            Inicio
+                        </a>
+                    </Link>
                     <Link href="/adminPackages">
-                        <a className="nav-link px-xl-3 px-lg-2 px-sm-2 mx-md-2 text-light font-weight-bold">
-                            Administrar paquetes
+                        <a className="nav-link px-xl-3 px-lg-2 pl-md-0 pr-md-0 ml-md-0 mr-md-2 text-light font-weight-bold">
+                            Paquetes
                         </a>
                     </Link>
                     <Link href="/adminSeguros">
-                        <a className="nav-link px-xl-3 px-lg-2 px-sm-2 mx-md-2 text-light font-weight-bold">
-                            Administrar seguros laborales
+                        <a className="nav-link px-xl-3 px-lg-2 pl-md-1 pr-md-0 mx-md-2 text-light font-weight-bold">
+                            Seguros laborales
                         </a>
                     </Link>
                     <Link href="/adminPlanesAlimenticios">
-                        <a className="nav-link px-xl-3 px-lg-2 px-sm-2 mx-md-2 text-light font-weight-bold">
-                            Administrar planes alimenticios
+                        <a className="nav-link px-xl-3 px-lg-2 pl-md-1 pr-md-0 mx-md-2 text-light font-weight-bold">
+                            Planes alimenticios
                         </a>
                     </Link>
                     <Link href="/adminPersonalMedico">
-                        <a className="nav-link px-xl-3 px-lg-2 px-md-2 mx-sm-2 text-light font-weight-bold">
-                            Administrar personal médico
+                        <a className="nav-link px-xl-3 px-lg-2 pl-md-1 pr-md-0 mx-md-2 text-light font-weight-bold">
+                            Personal médico
                         </a>
                     </Link>
                     <Link href="/adminTran">
-                        <a className="nav-link px-xl-3 px-lg-2 px-md-2 mx-sm-2 text-light font-weight-bold">
-                            Administrar transporte
+                        <a className="nav-link px-xl-3 px-lg-2 pl-md-1 pr-md-0 mx-md-2 text-light font-weight-bold">
+                            Transporte
                         </a>
                     </Link>
-                    <Link>
-                        <Nav.Link onClick={this.endSession} className="nav-link px-xl-3 px-lg-2 px-md-2 mx-sm-2 text-light font-weight-bold">
-                            Cerrar sesión
-                        </Nav.Link>
-                    </Link>
+                    <a onClick={this.endSession} className="nav-link px-xl-3 px-lg-2 pl-md-1 pr-md-0 mx-md-2 text-light font-weight-bold" style={{cursor: "pointer"}}>
+                        Cerrar sesión
+                    </a>
                 </Nav>
         </Navbar.Collapse>
 

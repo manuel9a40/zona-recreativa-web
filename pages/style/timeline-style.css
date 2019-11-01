@@ -8,6 +8,7 @@
     background-color: #28a745;
     content: '';
     position: absolute;
+    top: 0rem;
     left: 1.6rem;
     width: 4px;
     height: 100%;
