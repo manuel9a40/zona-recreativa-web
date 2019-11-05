@@ -89,7 +89,7 @@ class Catalogo extends Component {
                     {
                         for (var i = 0; i < crit.length; i++)
                         {
-                            if (crit[i].id == 'tipo')
+                            if (crit[i].id == 'type')
                             {
                                 for (var j = 0; j < crit[i].criteria.length; j++)
                                 {
@@ -152,7 +152,7 @@ class Catalogo extends Component {
                     {
                         item.criteria.map((crit, index) => (
                             <div key={crit.id} className="form-check">
-                                <input className="form-check-input" type="checkbox" name={crit.id} id={crit.id} index={index} onChange={this.handleFilterInputChange} checked={crit.value ? 'checked' : ''}/>
+                                <input className="form-check-input" type="checkbox" name={crit.id} id={crit.id} index={index} onChange={this.handleFilterInputChange} checked={crit.value ? crit.value : ''}/>
                                 <label className="form-check-label" htmlFor={crit.id} style={{fontSize: "14px"}}>
                                     {crit.name}
                                 </label>

@@ -144,6 +144,7 @@ class AdminPackages extends Component {
         this.closeModal = this.closeModal.bind(this);
         this.handleSubmitImages = this.handleSubmitImages.bind(this);
         this.handleSubmitMap = this.handleSubmitMap.bind(this);
+        this.handleCloseMapLoad = this.handleCloseMapLoad.bind(this);
         this.handleCloseImageLoad = this.handleCloseImageLoad.bind(this);
 
         this.removeActivity = this.removeActivity.bind(this);
@@ -194,7 +195,7 @@ class AdminPackages extends Component {
         });
     }
 
-    handleCloseImageLoad()
+    handleCloseMapLoad()
     {
         this.setState({
             openMapLoad: false
@@ -334,7 +335,8 @@ class AdminPackages extends Component {
         var db = firebase.firestore();
 
         this.setState({
-            id: id
+            id: id,
+            activities: []
         })
 
         db.collection("Itinerario").where("id", "==", id)
@@ -505,7 +507,7 @@ class AdminPackages extends Component {
     handleInputChange(e)
     {
         //obtiene el valor y el nombre del componente que cambio
-        const target = event.target;
+        const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name == '' ? target.id : target.name;
 
@@ -562,10 +564,8 @@ class AdminPackages extends Component {
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Ver paquete">
-                                                <IconButton>
-                                                    <Link href="/pPackage/[infoPkg]" as={`/pPackage/${rowData.id}`}>
-                                                        <VisibilityIcon/>
-                                                    </Link>
+                                                <IconButton href={`/pPackage/${rowData.id}`}>
+                                                    <VisibilityIcon/>
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Agregar fotos">
@@ -1068,7 +1068,7 @@ class AdminPackages extends Component {
                     <DropzoneDialog
                         open={this.state.openImgLoad}
                         onSave={this.handleSubmitImages}
-                        dialogTitle={title}
+                        dialogTitle='Subir imágenes'
                         filesLimit={50}
                         acceptedFiles={['image/*']}
                         showPreviews={true}
@@ -1079,7 +1079,7 @@ class AdminPackages extends Component {
                     <DropzoneDialog
                         open={this.state.openMapLoad}
                         onSave={this.handleSubmitMap}
-                        dialogTitle={titleMap}
+                        dialogTitle='Subir mapa'
                         filesLimit={1}
                         acceptedFiles={['image/*']}
                         showPreviews={true}

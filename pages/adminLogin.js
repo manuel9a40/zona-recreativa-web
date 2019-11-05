@@ -78,7 +78,7 @@ class AdminLogin extends Component {
         //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
         var email = this.state.username;
         var password = this.state.password;
-
+        var adminLogin = this;
 
         firebase.auth().setPersistence(fb.auth.Auth.Persistence.LOCAL)
             .then(function() {
@@ -95,9 +95,14 @@ class AdminLogin extends Component {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
-                console.log(error)
+                adminLogin.setState({
+                    showMessage: true,
+                    message: 'Error: ' + errorMessage
+                });
+                console.log(error);
             });
         });
+
         // Router.push('/adminMain');
 
         //Reincia los inputs

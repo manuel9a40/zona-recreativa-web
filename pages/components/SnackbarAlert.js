@@ -54,7 +54,7 @@ function SnackbarAlert(props) {
   const Icon = variantIcon[variant];
 
   return (
-    <SnackbarContent
+    /*<SnackbarContent
       className={clsx(classes[variant], className)}
       aria-describedby="client-snackbar"
       message={
@@ -63,6 +63,16 @@ function SnackbarAlert(props) {
           {message}
         </span>
       }
+      action={[
+        <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
+          <CloseIcon className={classes.icon} />
+        </IconButton>,
+      ]}
+      {...other}
+    />*/
+    <SnackbarContent
+      className={clsx(classes[variant], className)}
+      aria-describedby="client-snackbar"
       action={[
         <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
           <CloseIcon className={classes.icon} />
@@ -79,4 +89,4 @@ const useStyles2 = makeStyles(theme => ({
   },
 }));
 
-export default SnackbarAlert
+export default SnackbarAlert;
