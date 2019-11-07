@@ -3,8 +3,9 @@ import Navigation from './components/Navigation';
 import Router from 'next/router'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Alert from 'react-bootstrap/Alert'
 import Toast from 'react-bootstrap/Toast'
-import { Formik, Field } from 'formik';
+import TextField from '@material-ui/core/TextField';
 
 import React, { Component } from 'react';
 
@@ -137,20 +138,34 @@ class AdminLogin extends Component {
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-4" style={{textAlign: 'center'}}>
-                            <Formik onSubmit={(data)=>{console.log(data)}}
-                                initialValues = {{
-                                    username: "",
-                                    password: ""
-                                }}>
-                                {({handleSubmit}) =>
-                                    <Form onSubmit={handleSubmit}>
-                                        <Field name="username" placeholder="Usuario" component={this.InputField} className="form-control" value={this.state.username}  onChange={this.handleInputChange}/>
-                                        <Field name="password" type="password" placeholder="Contraseña" component={this.InputField} className="form-control" value={this.state.password}  onChange={this.handleInputChange}/>
-                                        <Button variant="dark" onClick={this.handleSubmit}>Iniciar sesión</Button>
-                                    </Form>
-                                }
-
-                            </Formik>
+                            <div className="row mt-2">
+                                <div className="col">
+                                    <TextField
+                                        name="username"
+                                        label="Usuario"
+                                        fullWidth
+                                        value={this.state.username}
+                                        onChange={this.handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row mt-2">
+                                <div className="col">
+                                    <TextField
+                                        name="password"
+                                        type="password"
+                                        label="Contraseña"
+                                        fullWidth
+                                        value={this.state.password}
+                                        onChange={this.handleInputChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row mt-2">
+                                <div className="col">
+                                    <Button variant="dark" onClick={this.handleSubmit}>Iniciar sesión</Button>
+                                </div>
+                            </div>
 
                         </div>
                     </div>

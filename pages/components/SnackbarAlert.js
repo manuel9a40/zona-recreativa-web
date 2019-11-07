@@ -54,6 +54,7 @@ function SnackbarAlert(props) {
   const Icon = variantIcon[variant];
 
   return (
+    /* NO DEJA COMPILAR!!! */
     /*<SnackbarContent
       className={clsx(classes[variant], className)}
       aria-describedby="client-snackbar"

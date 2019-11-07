@@ -958,6 +958,35 @@ class AdminPackages extends Component {
                             padding: 'dense',
                             addRowPosition: 'first'
                         }}
+                        localization={{
+                            body: {
+                                emptyDataSourceMessage: 'No hay elementos para mostrar',
+                                addTooltip: 'Agregar',
+                                deleteTooltip: 'Eliminar',
+                                editTooltip: 'Editar',
+                                editRow: {
+                                    deleteText: '¿Desea eliminar este elemento?',
+                                    cancelTooltip: 'Cancelar',
+                                    saveTooltip: 'Guardar'
+                                },
+                                header: {
+                                    actions: 'Acciones'
+                                },
+                                pagination: {
+                                    labelDisplayedRows: '{from}-{to} de {count}',
+                                    labelRowsSelect: 'elementos',
+                                    labelRowsPerPage: 'Elementos por página',
+                                    firstTooltip: 'Primera página',
+                                    previousTooltip: 'Anterior',
+                                    nextTooltip: 'Siguiente',
+                                    lastTooltip: 'Última página'
+                                },
+                                toolbar: {
+                                    searchTooltip: 'Buscar',
+                                    searchPlaceholder: 'Buscar'
+                                }
+                            }
+                        }}
                     />
 
                     {/*Modal 2*/}
@@ -1068,7 +1097,7 @@ class AdminPackages extends Component {
                     <DropzoneDialog
                         open={this.state.openImgLoad}
                         onSave={this.handleSubmitImages}
-                        dialogTitle='Subir imágenes'
+                        dialogTitle={title}
                         filesLimit={50}
                         acceptedFiles={['image/*']}
                         showPreviews={true}
@@ -1079,7 +1108,7 @@ class AdminPackages extends Component {
                     <DropzoneDialog
                         open={this.state.openMapLoad}
                         onSave={this.handleSubmitMap}
-                        dialogTitle='Subir mapa'
+                        dialogTitle={titleMap}
                         filesLimit={1}
                         acceptedFiles={['image/*']}
                         showPreviews={true}
