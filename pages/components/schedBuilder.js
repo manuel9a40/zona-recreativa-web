@@ -42,18 +42,18 @@ class SchedBuilder extends Component {
         return (
             <div className="border rounded px-2 my-2 py-2">
                 <div className="dragHandle" {...dragHandleProps}>
-                <div className="row">
-                    <div className="col-11">
-                        {this.state.descripActiv} <br/>
-                    {"Duración: " + this.state.durHora + " hora y " + this.state.durMin + " minutos."}
-                    </div>
-                    <div className="col-1">
-                        <button type="button" className="close" onClick={this.removeActivity} aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <div className="row">
+                        <div className="col-11">
+                            {this.state.descripActiv} <br/>
+                            {"Duración: " + this.state.durHora + " hora y " + this.state.durMin + " minutos."}
+                        </div>
+                        <div className="col-1">
+                            <button type="button" className="close" onClick={this.removeActivity} aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         )
     }

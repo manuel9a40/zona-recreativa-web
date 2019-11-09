@@ -51,11 +51,10 @@ const useStyles1 = makeStyles(theme => ({
 function SnackbarAlert(props) {
   const classes = useStyles1();
   const { className, message, onClose, variant, ...other } = props;
-  const Icon = variantIcon[variant];
+  const Icon = variantIcon[variant] ? variantIcon[variant] : InfoIcon;
 
   return (
-    /* NO DEJA COMPILAR!!! */
-    /*<SnackbarContent
+    <SnackbarContent
       className={clsx(classes[variant], className)}
       aria-describedby="client-snackbar"
       message={
@@ -64,16 +63,6 @@ function SnackbarAlert(props) {
           {message}
         </span>
       }
-      action={[
-        <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
-          <CloseIcon className={classes.icon} />
-        </IconButton>,
-      ]}
-      {...other}
-    />*/
-    <SnackbarContent
-      className={clsx(classes[variant], className)}
-      aria-describedby="client-snackbar"
       action={[
         <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
           <CloseIcon className={classes.icon} />

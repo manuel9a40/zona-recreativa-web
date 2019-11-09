@@ -17,14 +17,14 @@ function cutMsg(msg) {
 }
 
 const Package = (props) => (
-    <div className="card mb-3 col-lg-10 col-12 mx-auto" >
+    <div className="card mb-3 col-lg-12 border-0" >
         <div className="row no-gutters" >
-            <div className="m-2 my-md-auto mx-auto mb-3 col-md-3 col-7">
+            <div className="m-2 my-md-auto mx-auto mb-3 col-md-4 col-12">
                 <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.uid}`}>
                     <img src={props !== 'undefined' && props.img !== 'undefined' && props.img} className="card-img border border-secondary" alt="..." style={ {cursor:'pointer' }} />
                 </Link>
             </div>
-            <div className="col-md-8 col-10">
+            <div className="col-md-8 col-12">
                 <div className="card-body p-md-3 p-0">
                     <h5 className="card-title">
                         {props.title}
@@ -34,6 +34,7 @@ const Package = (props) => (
                     </p>
                     <Link href="/pPackage/[infoPkg]" as={`/pPackage/${props.uid}`}>
                         <Button className="btn-sm float-right mb-3" variant="dark" style={{background: "#f36421", color: "#000"}}>
+                            Ver más
                         </Button>
                     </Link>
                 </div>

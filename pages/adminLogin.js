@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form'
 import Alert from 'react-bootstrap/Alert'
 import Toast from 'react-bootstrap/Toast'
 import TextField from '@material-ui/core/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarAlert from './components/SnackbarAlert'
 
 import React, { Component } from 'react';
 
@@ -29,8 +31,9 @@ class AdminLogin extends Component {
         this.state = {
             username: '',
             password: '',
-            showMessage: false
-        };
+            showModal: false,
+            modalMsg: '',
+            modalType: ''        };
 
         // Initialize firebase
         var prom =  new Promise((resolve, reject) =>
@@ -42,6 +45,7 @@ class AdminLogin extends Component {
         //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     }
 
     componentDidMount()
@@ -66,12 +70,6 @@ class AdminLogin extends Component {
         });
     }
 
-    static async getInitialProps({query})
-    {
-
-        return {}
-    }
-
     handleSubmit(e)
     {
         e.preventDefault();
@@ -79,7 +77,7 @@ class AdminLogin extends Component {
         //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
         var email = this.state.username;
         var password = this.state.password;
-        var adminLogin = this;
+        var accessThis = this;
 
         firebase.auth().setPersistence(fb.auth.Auth.Persistence.LOCAL)
             .then(function() {
@@ -96,11 +94,26 @@ class AdminLogin extends Component {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
-                adminLogin.setState({
-                    showMessage: true,
-                    message: 'Error: ' + errorMessage
-                });
                 console.log(error);
+
+                var message = '';
+
+                if (error.code == 'auth/wrong-password')
+                    message = 'Contraseña incorrecta'
+                else if (error.code == "auth/user-not-found")
+                    message = 'No se encontró el usuario'
+                else if (error.code == "auth/invalid-email")
+                    message = 'Correo invalido'
+                else if (error.code == 'auth/too-many-requests')
+                    message = 'Demasiados intentos. Intentelo de nuevo despues de un rato'
+                else
+                    message = 'Ocurrio un error, intentelo mas tarde'
+
+                accessThis.setState({
+                    showModal: true,
+                    modalMsg: message,
+                    modalType: 'error'
+                })
             });
         });
 
@@ -125,12 +138,34 @@ class AdminLogin extends Component {
         });
     }
 
+    closeModal()
+    {
+        this.setState({
+            showModal: false
+        })
+    }
+
     render()
     {
         return(
             <div>
                 <Navigation />
                 <Layout>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.showModal}
+                        autoHideDuration={5000}
+                        onClose={this.closeModal}
+                    >
+                         <SnackbarAlert
+                             onClose={this.closeModal}
+                             variant={this.state.modalType}
+                             message={this.state.modalMsg}
+                         />
+                    </Snackbar>
                     <div className="row justify-content-center">
                         <h1 className="mt-2 mb-4">
                             Iniciar Sesión
@@ -170,18 +205,6 @@ class AdminLogin extends Component {
                         </div>
                     </div>
                 </Layout>
-
-                <Toast style={{
-                        position: 'absolute',
-                        top: 80,
-                        right: 10,}}
-                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
-                    <Toast.Header>
-                        <strong className="mr-auto"></strong>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.message}</Toast.Body>
-                </Toast>
-
             </div>
         )
     }

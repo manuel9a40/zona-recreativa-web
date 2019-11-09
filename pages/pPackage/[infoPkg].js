@@ -113,15 +113,24 @@ class infoPkg extends Component {
 
     fillCarousel()
     {
-        return this.state.imgs.map((item, i) => (
-            <Carousel.Item key={i}>
+        return this.state.imgs.map((item, i) => {
+            var caption = '';
+            if (item.hasOwnProperty('title') || item.hasOwnProperty('description'))
+            {
+                var title = item.hasOwnProperty('title') ? item.title : '';
+                var description = item.hasOwnProperty('description') ? item.description : '';
+
+                caption = ( <Carousel.Caption style={{width: "100%", left: "0px", background: "rgba(0,0,0,0.5)"}}>
+                                <h3>{ title }</h3>
+                                <p>{ description }</p>
+                            </Carousel.Caption> )
+            }
+
+            return ( <Carousel.Item key={i}>
                 <img className="d-block w-100" src={item}/>
-                <Carousel.Caption style={{width: "100%", left: "0px", background: "rgba(0,0,0,0.5)"}}>
-                    <h3>{ item.hasOwnProperty('title') ? item.title : '' }</h3>
-                    <p>{ item.hasOwnProperty('description') ? item.description : '' }</p>
-                </Carousel.Caption>
+                {caption}
             </Carousel.Item>
-        ));
+        )});
     }
 
     render() {
@@ -191,7 +200,7 @@ class infoPkg extends Component {
                                 Contacta con nosotros para reservar este recorrido:
                             </p>
                             <div className="row justify-content-center">
-                                <Link href={{ pathname: '/contact', query: { template: "bookit" }}}>
+                                <Link href={{ pathname: '/contact', query: { template: "bookit", pkgCode: info.id }}}>
                                     <Button className="btn-lg mb-3" variant="dark" style={{background: "#f5616f", color: "black"}}>
                                         Reservar
                                     </Button>

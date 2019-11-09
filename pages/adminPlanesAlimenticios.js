@@ -1,138 +1,126 @@
-import Layout from './components/GeneralLayout';
-import AdminNavigation from './components/AdminNavigation';
-import AdminTable from './components/AdminTable';
-import AdminTableItem from './components/AdminTableItem';
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Toast from 'react-bootstrap/Toast'
-import { Formik, Field } from 'formik';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-
 import React, { Component } from 'react';
+import MaterialTable from "material-table";
+import Snackbar from '@material-ui/core/Snackbar';
+import Router from 'next/router';
 
-class AdminPlanesAlimenticios extends Component {
+//Components
+import AdminNavigation from './components/AdminNavigation';
+import Layout from './components/FullLayout';
+import SnackbarAlert from './components/SnackbarAlert'
 
-    constructor ()
+import { initFirebase } from '../lib/firebase'
+
+import "firebase/auth";
+import "firebase/firestore";
+
+const uuidv1 = require('uuid/v1');
+var firebase;
+import * as fb from "firebase/app";
+
+class AdminPlanesAlimenticios extends Component
+{
+    constructor(props)
     {
-        super();
+        super(props)
 
-        //inicializa state
         this.state = {
-            nombrePlan: '',
-            comidas: '',
+            items: [],
             showModal: false,
-            showMessage: false,
-            editId: -1,
-            items: []
-        };
+            modalType: '',
+            modalMsg: '',
+            loadingContent: true,
 
-        //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.addPlanAlimenticio = this.addPlanAlimenticio.bind(this);
-        this.editPlanAlimenticio = this.editPlanAlimenticio.bind(this);
-        this.deletePlanAlimenticio = this.deletePlanAlimenticio.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    }
 
-    InputField = ({
-        field,
-        form: _,
-        ...props
-        }) => {
-        return (
-            <div>
-                <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
-            </div>
-        );
-    };
-
-    addPlanAlimenticio(e)
-    {
-        this.setState({
-            showModal: true,
-            editId: -1
-        });
-    }
-
-    editPlanAlimenticio(id)
-    {
-        this.setState({
-            nombrePlan: this.state.items[id][0],
-            comidas: this.state.items[id][1],
-            showModal: true,
-            editId: id
-        });
-    }
-
-    deletePlanAlimenticio(id)
-    {
-        this.state.items.pop(id);
-
-        this.setState({
-            showMessage: true,
-            message: 'Plan alimenticio eliminado'
-        });
-    }
-
-    handleSubmit(e)
-    {
-        e.preventDefault();
-
-        //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
-        let message = 'Plan alimenticio agregado';
-        if (this.state.editId === -1) {
-            this.state.items.push([
-                this.state.nombrePlan,
-                this.state.comidas]);
-        } else {
-            this.state.items[this.state.editId] = [
-                this.state.nombrePlan,
-                this.state.comidas];
-            message = 'Cambios guardados';
+            columns: [
+                { title: 'Nombre', field: 'nombre' },
+                { title: 'Desayuno', field: 'desayuno' },
+                { title: 'Merienda desayuno', field: 'meriendaDesayuno' },
+                { title: 'Almuerzo', field: 'almuerzo' },
+                { title: 'Merienda almuerzo', field: 'meriendaAlmuerzo' },
+                { title: 'Cafe', field: 'cena' },
+                { title: 'Merienda cafe', field: 'meriendaCena'}
+            ]
         }
-        //console.log(this.state);
 
-        //Reincia los inputs
-        this.setState({
-            nombrePlan: '',
-            comidas: '',
-            showModal: false,
-            showMessage: true,
-            message: message
+        firebase = initFirebase()
+
+        this.closeModal = this.closeModal.bind(this)
+    }
+
+    componentDidMount()
+    {
+        var username;
+        var uid;
+        var providerData;
+
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+          // console.log('user logged', user)
+        } else {
+          // No user is signed in.
+        }
+
+        var accessThis = this;
+        firebase.auth().onAuthStateChanged(user =>
+        {
+            if (user)
+            {
+                // console.log('user logged', user)
+                // User is signed in.
+                username = user.email;
+                uid = user.uid;
+                providerData = user.providerData;
+
+                var db = firebase.firestore()
+                var items = []
+
+                db.collection("Comidas").where("active", "==", true)
+                .get()
+                .then((querySnapshot) => {
+                    // console.log(querySnapshot)
+                    querySnapshot.forEach((doc) => {
+                        if (doc.exists)
+                        {
+                            var tempData = doc.data()
+
+                            items.push(tempData);
+                        }
+                    });
+                    this.setState({
+                        items,
+                        loadingContent: false
+                    })
+                })
+                .catch((error) => {
+                    this.setState({
+                        showModal: true,
+                        modalMsg: 'Error al cargar los datos. Intentelo mas tarde',
+                        modalType: 'error',
+                        loadingContent: false
+                    }, () => this.forceUpdate())
+                })
+
+            }
+            else
+            {
+                Router.push('/')
+            }
         });
     }
 
-    handleClose(e)
+    closeModal(event, reason)
     {
-        //Reincia los inputs
+        if (reason === 'clickaway') {
+          return;
+        }
         this.setState({
-            nombrePlan: '',
-            comidas: '',
             showModal: false
-        });
+        })
     }
 
-    //Actualiza los valores cada vez que se hace un cambio en el input
-    handleInputChange(e)
-    {
-        //obtiene el valor y el nombre del componente que cambio
-        const {value, name} = e.target;
-        // console.log(value, name);
-
-        // Actualiza el campo que se modifico
-        this.setState({
-            [name]: value
-        });
-    }
-
-    render()
-    {
-        return(
+    render () {
+        return (
             <div>
                 <AdminNavigation />
                 <Layout>
@@ -141,61 +129,205 @@ class AdminPlanesAlimenticios extends Component {
                             Administración de planes alimenticios
                         </h1>
                     </div>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.showModal}
+                        autoHideDuration={5000}
+                        onClose={this.closeModal}
+                      >
+                         <SnackbarAlert
+                            onClose={this.closeModal}
+                            variant={this.state.modalType}
+                            message={this.state.modalMsg}
+                        />
+                      </Snackbar>
 
-                    <div className="package-admin-table">
-                        <AdminTable headers={['Nombre del plan','Comidas']}>
-                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editPlanAlimenticio} onDelete={this.deletePlanAlimenticio} />)}
-                        </AdminTable>
-                    </div>
+                    <MaterialTable
+                        title=''
+                        columns={this.state.columns}
+                        data={ this.state.items }
+                        editable={{
+                            onRowAdd: newData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    newData['id'] = uuidv1();
+                                    // newData.price = '₡ ' + newData.price;
 
-                    <Modal show={this.state.showModal} onHide={this.handleClose} centered>
-                        <Modal.Header closeButton>
-                            <Modal.Title></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div className="" style={{textAlign: 'center'}}>
-                                <Formik  onSubmit={(data)=>{console.log(data)}}
-                                    initialValues = {{
-                                    nombrePlan: "",
-                                    comidas: "" }}>
-                                    {({handleSubmit}) =>
-                                        <Form onSubmit={handleSubmit}>
-                                            <Field name="nombrePlan" placeholder="Nombre del plan" component={this.InputField} className="form-control" value={this.state.nombrePlan}  onChange={this.handleInputChange} />
-                                            <Field name="comidas" placeholder="Comidas" component={this.InputField} className="form-control" value={this.state.comidas}  onChange={this.handleInputChange} />
-                                        </Form>
+                                    //check if there is any empty value
+                                    if (!newData.hasOwnProperty('nombre'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'Debe ingresar un nombre para el plan',
+                                            modalType: 'error',
+                                            showModal: tue
+                                        }, () => reject('noName'))
                                     }
-                                </Formik>
-                            </div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="light" onClick={this.handleClose}>
-                                Cancelar
-                            </Button>
-                            <Button variant="dark" onClick={this.handleSubmit}>
-                                Enviar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                                    else
+                                    {
+                                        newData.active = true
+
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        // console.log(newData)
+
+                                        // load thumbnail
+                                        db.collection("Comidas").doc(newData.id).set(newData)
+                                        .then(function(docRef) {
+                                            // console.log("Document written with ID: ", docRef.id);
+
+                                            data.push(newData);
+                                            var message = ''
+                                            var typeMsg = ''
+
+                                            message = 'Plan agregado exitosamente.'
+                                            typeMsg = 'success'
+
+                                            // console.log(data)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al agregar el plan. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowUpdate: (newData, oldData) =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+                                    data[index] = newData;
+
+                                    if (!newData.hasOwnProperty('nombre'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'El plan debe tener un nombre',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject('noName'))
+                                    }
+                                    else
+                                    {
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        console.log(newData, typeof newData.vige)
+
+                                        db.collection("Comidas").doc(newData.id).set(newData)
+                                        .then(function() {
+                                            // console.log("Document written with ID: ", docRef.id);
+                                            var message = 'Plan actualizado exitosamente.'
+                                            var typeMsg = 'success'
+
+                                            // console.log(message, typeMsg)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al actualizar el plan. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowDelete: oldData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+
+                                    var db = firebase.firestore();
+                                    var accessThis = this;
+
+                                    // console.log(oldData)
+
+                                    // load thumbnail
+                                    db.collection("Comidas").doc(oldData.id).set({
+                                            active: false
+                                        }, { merge: true })
+                                    .then(function() {
+                                        // console.log("Document written with ID: ", docRef.id);
+
+                                        data.splice(index, 1);
+
+                                        var message = 'Plan eliminado exitosamente.'
+                                        var typeMsg = 'success'
+
+                                        accessThis.setState({
+                                            data,
+                                            modalMsg: message,
+                                            modalType: typeMsg,
+                                            showModal: true
+                                        }, () => resolve());
+                                    })
+                                    .catch((err) => {
+                                        accessThis.setState({
+                                            modalMsg: 'Error al eliminar el plan. Intentelo más tarde.',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject());
+                                    })
+                                })
+                        }}
+                        isLoading={this.state.loadingContent}
+                        options={{
+                            actionsColumnIndex: -1,
+                            filtering: false,
+                            addRowPosition: 'first',
+                            headerStyle: {
+                                backgroundColor: '#0fb4f0'
+                            }
+                        }}
+                        localization={{
+                            body: {
+                                emptyDataSourceMessage: 'No hay elementos para mostrar',
+                                addTooltip: 'Agregar',
+                                deleteTooltip: 'Eliminar',
+                                editTooltip: 'Editar',
+                                editRow: {
+                                    deleteText: '¿Desea eliminar este elemento?',
+                                    cancelTooltip: 'Cancelar',
+                                    saveTooltip: 'Guardar'
+                                },
+                                header: {
+                                    actions: 'Acciones'
+                                },
+                                pagination: {
+                                    labelDisplayedRows: '{from}-{to} de {count}',
+                                    labelRowsSelect: 'elementos',
+                                    labelRowsPerPage: 'Elementos por página',
+                                    firstTooltip: 'Primera página',
+                                    previousTooltip: 'Anterior',
+                                    nextTooltip: 'Siguiente',
+                                    lastTooltip: 'Última página'
+                                },
+                                toolbar: {
+                                    searchTooltip: 'Buscar',
+                                    searchPlaceholder: 'Buscar'
+                                }
+                            }
+                        }}
+                    />
                 </Layout>
-
-                <Toast style={{
-                        position: 'absolute',
-                        top: 80,
-                        right: 10,}}
-                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
-                    <Toast.Header>
-                        <strong className="mr-auto"></strong>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.message}</Toast.Body>
-                </Toast>
-
-                <Fab color="primary" aria-label="add" style={{
-                        position: 'absolute',
-                        bottom: 15,
-                        right: 15,}} onClick={this.addPlanAlimenticio}>
-                    <AddIcon />
-                </Fab>
-
             </div>
         )
     }

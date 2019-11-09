@@ -1,138 +1,191 @@
-import Layout from './components/GeneralLayout';
-import AdminNavigation from './components/AdminNavigation';
-import AdminTable from './components/AdminTable';
-import AdminTableItem from './components/AdminTableItem';
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Toast from 'react-bootstrap/Toast'
-import { Formik, Field } from 'formik';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-
 import React, { Component } from 'react';
+import MaterialTable from "material-table";
+import Snackbar from '@material-ui/core/Snackbar';
+import TextField from '@material-ui/core/TextField';
+import Router from 'next/router';
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
-class AdminPersonalMedico extends Component {
 
-    constructor ()
+//Components
+import AdminNavigation from './components/AdminNavigation';
+import Layout from './components/FullLayout';
+import SnackbarAlert from './components/SnackbarAlert'
+
+import { initFirebase } from '../lib/firebase'
+
+import "firebase/auth";
+import "firebase/firestore";
+
+const uuidv1 = require('uuid/v1');
+var firebase;
+import * as fb from "firebase/app";
+
+const searchOptions = {
+    bounds:{north: 11.2863, west: -85.9991, south: 7.9939, east: -82.5686},
+    componentRestrictions: {country: 'cr'},
+    types: ['(regions)']
+}
+
+class AdminPersonalMedico extends Component
+{
+    constructor(props)
     {
-        super();
+        super(props)
 
-        //inicializa state
         this.state = {
-            nombrePersona: '',
-            nombrePaquete: '',
+            items: [],
             showModal: false,
-            showMessage: false,
-            editId: -1,
-            items: []
-        };
+            modalType: '',
+            modalMsg: '',
+            loadingContent: true,
+            address: '',
+            location: {},
 
-        //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.addPersonalMedico = this.addPersonalMedico.bind(this);
-        this.editPersonalMedico = this.editPersonalMedico.bind(this);
-        this.deletePersonalMedico = this.deletePersonalMedico.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    }
 
-    InputField = ({
-        field,
-        form: _,
-        ...props
-        }) => {
-        return (
-            <div>
-                <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
-            </div>
-        );
-    };
-
-    addPersonalMedico(e)
-    {
-        this.setState({
-            showModal: true,
-            editId: -1
-        });
-    }
-
-    editPersonalMedico(id)
-    {
-        this.setState({
-            nombrePersona: this.state.items[id][0],
-            nombrePaquete: this.state.items[id][1],
-            showModal: true,
-            editId: id
-        });
-    }
-
-    deletePersonalMedico(id)
-    {
-        this.state.items.pop(id);
-
-        this.setState({
-            showMessage: true,
-            message: 'Personal medico eliminado'
-        });
-    }
-
-    handleSubmit(e)
-    {
-        e.preventDefault();
-
-        //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
-        let message = 'Personal medico agregado';
-        if (this.state.editId === -1) {
-            this.state.items.push([
-                this.state.nombrePersona,
-                this.state.nombrePaquete]);
-        } else {
-            this.state.items[this.state.editId] = [
-                this.state.nombrePersona,
-                this.state.nombrePaquete];
-            message = 'Cambios guardados';
+            columns: [
+                { title: 'Nombre', field: 'nombre' },
+                { title: 'Empresa', field: 'tipo', lookup: { publico: 'Publico', privado: 'Privado' }, initialEditValue: 'publico'},
+                { title: 'Zona de cobertura', field: 'zona.address', editComponent: props => (
+                    <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect} searchOptions={searchOptions}>
+                        {
+                            ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                                <div>
+                                    <TextField
+                                        {...getInputProps({
+                                            placeholder: 'Search Places ...',
+                                            className: 'location-search-input',
+                                          })}
+                                    />
+                                    <div className="autocomplete-dropdown-container">
+                                        {loading && <div>Loading...</div>}
+                                        {suggestions.map(suggestion => {
+                                            const className = suggestion.active
+                                            ? 'suggestion-item--active'
+                                            : 'suggestion-item';
+                                            // inline style for demonstration purpose
+                                            const style = suggestion.active
+                                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                                            return (
+                                                <div
+                                                {...getSuggestionItemProps(suggestion, {
+                                                    className,
+                                                    style,
+                                                })}
+                                                >
+                                                <span>{suggestion.description}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </PlacesAutocomplete>
+                ) },
+                { title: 'Telefono', field: 'phone' }
+            ]
         }
-        //console.log(this.state);
 
-        //Reincia los inputs
-        this.setState({
-            nombrePersona: '',
-            nombrePaquete: '',
-            showModal: false,
-            showMessage: true,
-            message: message
+        firebase = initFirebase()
+
+        this.closeModal = this.closeModal.bind(this)
+    }
+
+    componentDidMount()
+    {
+        var username;
+        var uid;
+        var providerData;
+
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+          // console.log('user logged', user)
+        } else {
+          // No user is signed in.
+        }
+
+        var accessThis = this;
+        firebase.auth().onAuthStateChanged(user =>
+        {
+            if (user)
+            {
+                // console.log('user logged', user)
+                // User is signed in.
+                username = user.email;
+                uid = user.uid;
+                providerData = user.providerData;
+
+                var db = firebase.firestore()
+                var items = []
+
+                db.collection("PersonalMedico").where("active", "==", true)
+                .get()
+                .then((querySnapshot) => {
+                    // console.log(querySnapshot)
+                    querySnapshot.forEach((doc) => {
+                        if (doc.exists)
+                        {
+                            var tempData = doc.data()
+
+                            items.push(tempData);
+                        }
+                    });
+                    accessThis.setState({
+                        items,
+                        loadingContent: false
+                    })
+                })
+                .catch((error) => {
+                    accessThis.setState({
+                        showModal: true,
+                        modalMsg: 'Error al cargar los datos. Intentelo mas tarde',
+                        modalType: 'error',
+                        loadingContent: false
+                    }, () => accessThis.forceUpdate())
+                })
+            }
+            else
+            {
+                Router.push('/')
+            }
         });
     }
 
-    handleClose(e)
+    closeModal(event, reason)
     {
-        //Reincia los inputs
+        if (reason === 'clickaway') {
+          return;
+        }
         this.setState({
-            nombrePersona: '',
-            nombrePaquete: '',
             showModal: false
-        });
+        })
     }
 
-    //Actualiza los valores cada vez que se hace un cambio en el input
-    handleInputChange(e)
-    {
-        //obtiene el valor y el nombre del componente que cambio
-        const {value, name} = e.target;
-        // console.log(value, name);
+    handleChange = address => {
+        this.setState({ address });
+      };
 
-        // Actualiza el campo que se modifico
-        this.setState({
-            [name]: value
-        });
-    }
+      handleSelect = address => {
+        geocodeByAddress(address)
+          .then(results => getLatLng(results[0]))
+          .then(latLng => {
+              this.setState({
+                  address: address,
+                  location: latLng
+              });
+              // console.log('Success', latLng)
+              // console.log(this.state.items)
+          })
+          .catch(error => console.error('Error', error));
+      };
 
-    render()
-    {
-        return(
+    render () {
+        return (
             <div>
                 <AdminNavigation />
                 <Layout>
@@ -141,61 +194,216 @@ class AdminPersonalMedico extends Component {
                             Administración de personal médico
                         </h1>
                     </div>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.showModal}
+                        autoHideDuration={5000}
+                        onClose={this.closeModal}
+                      >
+                         <SnackbarAlert
+                            onClose={this.closeModal}
+                            variant={this.state.modalType}
+                            message={this.state.modalMsg}
+                        />
+                      </Snackbar>
 
-                    <div className="package-admin-table">
-                        <AdminTable headers={['Nombre de la persona','Nombre del paquete']}>
-                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editPersonalMedico} onDelete={this.deletePersonalMedico} />)}
-                        </AdminTable>
-                    </div>
+                    <MaterialTable
+                        title=''
+                        columns={this.state.columns}
+                        data={ this.state.items }
+                        editable={{
+                            onRowAdd: newData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    newData['id'] = uuidv1();
+                                    // newData.price = '₡ ' + newData.price;
 
-                    <Modal show={this.state.showModal} onHide={this.handleClose} centered>
-                        <Modal.Header closeButton>
-                            <Modal.Title></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div className="" style={{textAlign: 'center'}}>
-                                <Formik  onSubmit={(data)=>{console.log(data)}}
-                                    initialValues = {{
-                                    nombrePersona: "",
-                                    nombrePaquete: "" }}>
-                                    {({handleSubmit}) =>
-                                        <Form onSubmit={handleSubmit}>
-                                            <Field name="nombrePersona" placeholder="Nombre de la persona" component={this.InputField} className="form-control" value={this.state.nombrePersona}  onChange={this.handleInputChange} />
-                                            <Field name="nombrePaquete" placeholder="Nombre del paquete" component={this.InputField} className="form-control" value={this.state.nombrePaquete}  onChange={this.handleInputChange} />
-                                        </Form>
+                                    //check if there is any empty value
+                                    if (!newData.hasOwnProperty('nombre'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'Debe ingresar un nombre para el personal medico',
+                                            modalType: 'error',
+                                            showModal: tue
+                                        }, () => reject('noName'))
                                     }
-                                </Formik>
-                            </div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="light" onClick={this.handleClose}>
-                                Cancelar
-                            </Button>
-                            <Button variant="dark" onClick={this.handleSubmit}>
-                                Enviar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                                    else
+                                    {
+                                        newData.active = true
+
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        newData.zona = {
+                                            address: accessThis.state.address,
+                                            location: accessThis.state.location
+                                        }
+
+                                        // console.log(newData)
+
+                                        // load thumbnail
+                                        db.collection("PersonalMedico").doc(newData.id).set(newData)
+                                        .then(function(docRef) {
+                                            // console.log("Document written with ID: ", docRef.id);
+
+                                            data.push(newData);
+                                            var message = ''
+                                            var typeMsg = ''
+
+                                            message = 'Personal medico agregado exitosamente.'
+                                            typeMsg = 'success'
+
+                                            // console.log(data)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al agregar el personal medico. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowUpdate: (newData, oldData) =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+                                    data[index] = newData;
+
+                                    if (!newData.hasOwnProperty('nombre'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'El personal medico debe tener un nombre',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject('noName'))
+                                    }
+                                    else
+                                    {
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        newData.zona = {
+                                            address: accessThis.state.address,
+                                            location: accessThis.state.location
+                                        }
+
+                                        // console.log(newData, typeof newData.vige)
+
+                                        db.collection("PersonalMedico").doc(newData.id).set(newData)
+                                        .then(function() {
+                                            // console.log("Document written with ID: ", docRef.id);
+                                            var message = 'Personal medico actualizado exitosamente.'
+                                            var typeMsg = 'success'
+
+                                            // console.log(message, typeMsg)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al actualizar el personal medico. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowDelete: oldData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+
+                                    var db = firebase.firestore();
+                                    var accessThis = this;
+
+                                    // console.log(oldData)
+
+                                    // load thumbnail
+                                    db.collection("PersonalMedico").doc(oldData.id).set({
+                                            active: false
+                                        }, { merge: true })
+                                    .then(function() {
+                                        // console.log("Document written with ID: ", docRef.id);
+
+                                        data.splice(index, 1);
+
+                                        var message = 'Personal medico eliminado exitosamente.'
+                                        var typeMsg = 'success'
+
+                                        accessThis.setState({
+                                            data,
+                                            modalMsg: message,
+                                            modalType: typeMsg,
+                                            showModal: true
+                                        }, () => resolve());
+                                    })
+                                    .catch((err) => {
+                                        accessThis.setState({
+                                            modalMsg: 'Error al eliminar el personal medico. Intentelo más tarde.',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject());
+                                    })
+                                })
+                        }}
+                        isLoading={this.state.loadingContent}
+                        options={{
+                            actionsColumnIndex: -1,
+                            filtering: false,
+                            addRowPosition: 'first',
+                            headerStyle: {
+                                backgroundColor: '#0fb4f0'
+                            }
+                        }}
+                        localization={{
+                            body: {
+                                emptyDataSourceMessage: 'No hay elementos para mostrar',
+                                addTooltip: 'Agregar',
+                                deleteTooltip: 'Eliminar',
+                                editTooltip: 'Editar',
+                                editRow: {
+                                    deleteText: '¿Desea eliminar este elemento?',
+                                    cancelTooltip: 'Cancelar',
+                                    saveTooltip: 'Guardar'
+                                },
+                                header: {
+                                    actions: 'Acciones'
+                                },
+                                pagination: {
+                                    labelDisplayedRows: '{from}-{to} de {count}',
+                                    labelRowsSelect: 'elementos',
+                                    labelRowsPerPage: 'Elementos por página',
+                                    firstTooltip: 'Primera página',
+                                    previousTooltip: 'Anterior',
+                                    nextTooltip: 'Siguiente',
+                                    lastTooltip: 'Última página'
+                                },
+                                toolbar: {
+                                    searchTooltip: 'Buscar',
+                                    searchPlaceholder: 'Buscar'
+                                }
+                            }
+                        }}
+                    />
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd8PFTlyiBJe5-fpQyJk7v4BlNH55dCzk&libraries=places"></script>
                 </Layout>
-
-                <Toast style={{
-                        position: 'absolute',
-                        top: 80,
-                        right: 10,}}
-                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
-                    <Toast.Header>
-                        <strong className="mr-auto"></strong>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.message}</Toast.Body>
-                </Toast>
-
-                <Fab color="primary" aria-label="add" style={{
-                        position: 'absolute',
-                        bottom: 15,
-                        right: 15,}} onClick={this.addPersonalMedico}>
-                    <AddIcon />
-                </Fab>
-
             </div>
         )
     }

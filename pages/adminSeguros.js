@@ -1,144 +1,127 @@
-import Layout from './components/GeneralLayout';
-import AdminNavigation from './components/AdminNavigation';
-import AdminTable from './components/AdminTable';
-import AdminTableItem from './components/AdminTableItem';
-import Button from 'react-bootstrap/Button'
-import Table from 'react-bootstrap/Table'
-import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
-import Toast from 'react-bootstrap/Toast'
-import { Formik, Field } from 'formik';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-
 import React, { Component } from 'react';
+import MaterialTable from "material-table";
+import Snackbar from '@material-ui/core/Snackbar';
+import Router from 'next/router';
 
-class AdminSeguros extends Component {
+//Components
+import AdminNavigation from './components/AdminNavigation';
+import Layout from './components/FullLayout';
+import SnackbarAlert from './components/SnackbarAlert'
 
-    constructor ()
+import { initFirebase } from '../lib/firebase'
+
+import "firebase/auth";
+import "firebase/firestore";
+
+const uuidv1 = require('uuid/v1');
+var firebase;
+import * as fb from "firebase/app";
+
+class AdminSeguros extends Component
+{
+    constructor(props)
     {
-        super();
+        super(props)
 
-        //inicializa state
         this.state = {
-            nombrePersona: '',
-            cedulaPersona: '',
-            numeroSeguro: '',
+            items: [],
             showModal: false,
-            showMessage: false,
-            editId: -1,
-            items: []
-        };
+            modalType: '',
+            modalMsg: '',
+            loadingContent: true,
 
-        //Se necesita hacer bind a todas la funciones que se usen dentro de la clase.
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.addSeguro = this.addSeguro.bind(this);
-        this.editSeguro = this.editSeguro.bind(this);
-        this.deleteSeguro = this.deleteSeguro.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleClose = this.handleClose.bind(this);
-    }
 
-    InputField = ({
-        field,
-        form: _,
-        ...props
-        }) => {
-        return (
-            <div>
-                <input style={{marginTop:5, marginBottom:15 , padding:10}} {...field} {...props} />
-            </div>
-        );
-    };
-
-    addSeguro(e)
-    {
-        this.setState({
-            showModal: true,
-            editId: -1
-        });
-    }
-
-    editSeguro(id)
-    {
-        this.setState({
-            nombrePersona: this.state.items[id][0],
-            cedulaPersona: this.state.items[id][1],
-            numeroSeguro: this.state.items[id][2],
-            showModal: true,
-            editId: id
-        });
-    }
-
-    deleteSeguro(id)
-    {
-        this.state.items.pop(id);
-
-        this.setState({
-            showMessage: true,
-            message: 'Seguro eliminado'
-        });
-    }
-
-    handleSubmit(e)
-    {
-        e.preventDefault();
-
-        //Poner aqui lo que tiene que hacer el form cuando se envia la informacion
-        let message = 'Seguro agregado';
-        if (this.state.editId === -1) {
-            this.state.items.push([
-                this.state.nombrePersona,
-                this.state.cedulaPersona,
-                this.state.numeroSeguro]);
-        } else {
-            this.state.items[this.state.editId] = [
-                this.state.nombrePersona,
-                this.state.cedulaPersona,
-                this.state.numeroSeguro];
-            message = 'Cambios guardados';
+            columns: [
+                { title: 'Cedula', field: 'cedula' },
+                { title: 'Nombre', field: 'nombre' },
+                { title: 'Apellidos', field: 'apellidos' },
+                { title: 'Rige', field: 'vige', type: 'date' },
+                { title: 'Vencimiento', field: 'vence', type: 'date' },
+                { title: 'Cobertura', field: 'cobertura' }
+            ]
         }
-        //console.log(this.state);
 
-        //Reincia los inputs
-        this.setState({
-            nombrePersona: '',
-            cedulaPersona: '',
-            numeroSeguro: '',
-            showModal: false,
-            showMessage: true,
-            message: message
+
+        firebase = initFirebase()
+
+
+        this.closeModal = this.closeModal.bind(this)
+    }
+
+    componentDidMount()
+    {
+        var username;
+        var uid;
+        var providerData;
+
+        var user = firebase.auth().currentUser;
+
+        if (!user)
+            // Router.push('/')
+
+        var accessThis = this;
+        firebase.auth().onAuthStateChanged(user =>
+        {
+            if (user)
+            {
+                // console.log('user logged', user)
+                // User is signed in.
+                username = user.email;
+                uid = user.uid;
+                providerData = user.providerData;
+
+                var db = firebase.firestore()
+                var items = []
+
+                db.collection("Empleados").where("active", "==", true)
+                .get()
+                .then((querySnapshot) => {
+                    // console.log(querySnapshot)
+                    querySnapshot.forEach((doc) => {
+                        if (doc.exists)
+                        {
+                            var tempData = doc.data()
+
+                            tempData.vige = tempData.vige.toDate()
+                            tempData.vence = tempData.vence.toDate()
+                            // console.log(tempData)
+                            items.push(tempData);
+                        }
+                    });
+                    this.setState({
+                        items,
+                        loadingContent: false
+                    }, () => this.forceUpdate())
+                })
+                .catch((error) => {
+                    console.log(error)
+                    this.setState({
+                        showModal: true,
+                        modalMsg: 'Error al cargar los datos. Intentelo mas tarde',
+                        modalType: 'error',
+                        loadingContent: false
+                    }, () => accessThis.forceUpdate())
+                })
+            }
+            else
+            {
+                Router.push('/')
+            }
         });
     }
 
-    handleClose(e)
+    closeModal(event, reason)
     {
-        //Reincia los inputs
+        if (reason === 'clickaway') {
+          return;
+        }
         this.setState({
-            nombrePersona: '',
-            cedulaPersona: '',
-            numeroSeguro: '',
             showModal: false
-        });
+        })
     }
 
-    //Actualiza los valores cada vez que se hace un cambio en el input
-    handleInputChange(e)
-    {
-        //obtiene el valor y el nombre del componente que cambio
-        const {value, name} = e.target;
-        // console.log(value, name);
-
-        // Actualiza el campo que se modifico
-        this.setState({
-            [name]: value
-        });
-    }
-
-    render()
-    {
-        return(
+    render () {
+        return (
             <div>
                 <AdminNavigation />
                 <Layout>
@@ -147,63 +130,226 @@ class AdminSeguros extends Component {
                             Administración de seguros laborales
                         </h1>
                     </div>
+                    <Snackbar
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left',
+                        }}
+                        open={this.state.showModal}
+                        autoHideDuration={5000}
+                        onClose={this.closeModal}
+                      >
+                         <SnackbarAlert
+                            onClose={this.closeModal}
+                            variant={this.state.modalType}
+                            message={this.state.modalMsg}
+                        />
+                      </Snackbar>
 
-                    <div className="package-admin-table">
-                        <AdminTable headers={['Nombre de la persona','Cédula de la persona','Número de seguro']}>
-                            {this.state.items.map((item, index) => <AdminTableItem id={index} items={item} onEdit={this.editSeguro} onDelete={this.deleteSeguro} />)}
-                        </AdminTable>
-                    </div>
+                    <MaterialTable
+                        title=''
+                        columns={this.state.columns}
+                        data={ this.state.items }
+                        editable={{
+                            onRowAdd: newData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    newData['id'] = uuidv1();
+                                    // newData.price = '₡ ' + newData.price;
 
-                    <Modal show={this.state.showModal} onHide={this.handleClose} centered>
-                        <Modal.Header closeButton>
-                            <Modal.Title></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <div className="" style={{textAlign: 'center'}}>
-                                <Formik  onSubmit={(data)=>{console.log(data)}}
-                                    initialValues = {{
-                                    nombrePersona: "",
-                                    cedulaPersona: "",
-                                    numeroSeguro: "" }}>
-                                    {({handleSubmit}) =>
-                                        <Form onSubmit={handleSubmit}>
-                                            <Field name="nombrePersona" placeholder="Nombre de la persona" component={this.InputField} className="form-control" value={this.state.nombrePersona}  onChange={this.handleInputChange} />
-                                            <Field name="cedulaPersona" placeholder="Cédula de la persona" component={this.InputField} className="form-control" value={this.state.cedulaPersona}  onChange={this.handleInputChange} />
-                                            <Field name="numeroSeguro" placeholder="Número de seguro" component={this.InputField} className="form-control" value={this.state.numeroSeguro}  onChange={this.handleInputChange} />
-                                        </Form>
+                                    //check if there is any empty value
+                                    if (!newData.hasOwnProperty('nombre') || !newData.hasOwnProperty('apellidos') ||
+                                        !newData.hasOwnProperty('cedula') || !newData.hasOwnProperty('vige') ||
+                                        !newData.hasOwnProperty('vence'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'Debe llenar todos los datos',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject('emptyFields'))
                                     }
-                                </Formik>
-                            </div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="light" onClick={this.handleClose}>
-                                Cancelar
-                            </Button>
-                            <Button variant="dark" onClick={this.handleSubmit}>
-                                Enviar
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                                    else
+                                    {
+                                        newData.active = true
+
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        // console.log(newData)
+
+                                        // load thumbnail
+                                        db.collection("Empleados").doc(newData.id).set(newData)
+                                        .then(function(docRef) {
+                                            // console.log("Document written with ID: ", docRef.id);
+
+                                            data.push(newData);
+                                            var message = ''
+                                            var typeMsg = ''
+
+                                            message = 'Empleado agregado exitosamente.'
+                                            typeMsg = 'success'
+
+                                            // console.log(data)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al agregar el empleado. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowUpdate: (newData, oldData) =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+                                    data[index] = newData;
+
+                                    if (!newData.hasOwnProperty('nombre') || !newData.hasOwnProperty('apellidos') ||
+                                        !newData.hasOwnProperty('numeroSeguro') || !newData.hasOwnProperty('vige') ||
+                                        !newData.hasOwnProperty('vence'))
+                                    {
+                                        this.setState({
+                                            modalMsg: 'Debe llenar todos los datos',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject('emptyFields'))
+                                    }
+                                    else
+                                    {
+                                        var db = firebase.firestore();
+                                        var accessThis = this
+
+                                        var storeData = JSON.parse(JSON.stringify(newData));
+                                        // var storeData = newData
+
+                                        if (typeof newData.vige == 'string')
+                                            storeData.vige = fb.firestore.Timestamp.fromDate(new Date(newData.vige))
+                                        else
+                                            storeData.vige = fb.firestore.Timestamp.fromDate(newData.vige)
+
+                                        if (typeof newData.vence == 'string')
+                                            storeData.vence = fb.firestore.Timestamp.fromDate(new Date(newData.vence))
+                                        else
+                                            storeData.vence = fb.firestore.Timestamp.fromDate(newData.vence)
+
+                                        // newData.vige = newData.vige.toDate()
+                                        // newData.vence = newData.vence.toDate()
+
+                                        console.log(newData, typeof newData.vige)
+
+                                        db.collection("Empleados").doc(newData.id).set(storeData)
+                                        .then(function() {
+                                            // console.log("Document written with ID: ", docRef.id);
+                                            var message = 'Empleado actualizado exitosamente.'
+                                            var typeMsg = 'success'
+
+                                            // console.log(message, typeMsg)
+                                            accessThis.setState({
+                                                data,
+                                                modalMsg: message,
+                                                modalType: typeMsg,
+                                                showModal: true
+                                            }, () => resolve());
+                                        })
+                                        .catch((error) => {
+                                            accessThis.setState({
+                                                modalMsg: 'Error al actualizar los datos empleado. Intentelo más tarde.',
+                                                modalType: 'error',
+                                                showModal: true
+                                            }, () => reject());
+                                        })
+                                    }
+                                }),
+                            onRowDelete: oldData =>
+                                new Promise((resolve, reject) =>
+                                {
+                                    const data = this.state.items;
+                                    const index = data.indexOf(oldData);
+
+                                    var db = firebase.firestore();
+                                    var accessThis = this;
+
+                                    // console.log(oldData)
+
+                                    // load thumbnail
+                                    db.collection("Empleados").doc(oldData.id).set({
+                                            active: false
+                                        }, { merge: true })
+                                    .then(function() {
+                                        // console.log("Document written with ID: ", docRef.id);
+
+                                        data.splice(index, 1);
+
+                                        var message = 'Empleado eliminado exitosamente.'
+                                        var typeMsg = 'success'
+
+                                        accessThis.setState({
+                                            data,
+                                            modalMsg: message,
+                                            modalType: typeMsg,
+                                            showModal: true
+                                        }, () => resolve());
+                                    })
+                                    .catch((err) => {
+                                        accessThis.setState({
+                                            modalMsg: 'Error al eliminar el empleado. Intentelo más tarde.',
+                                            modalType: 'error',
+                                            showModal: true
+                                        }, () => reject());
+                                    })
+                                })
+                        }}
+                        isLoading={this.state.loadingContent}
+                        options={{
+                            actionsColumnIndex: -1,
+                            filtering: false,
+                            addRowPosition: 'first',
+                            search: true,
+                            headerStyle: {
+                                backgroundColor: '#0fb4f0'
+                            }
+                        }}
+                        localization={{
+                            body: {
+                                emptyDataSourceMessage: 'No hay elementos para mostrar',
+                                addTooltip: 'Agregar',
+                                deleteTooltip: 'Eliminar',
+                                editTooltip: 'Editar',
+                                editRow: {
+                                    deleteText: '¿Desea eliminar este elemento?',
+                                    cancelTooltip: 'Cancelar',
+                                    saveTooltip: 'Guardar'
+                                },
+                                header: {
+                                    actions: 'Acciones'
+                                },
+                                pagination: {
+                                    labelDisplayedRows: '{from}-{to} de {count}',
+                                    labelRowsSelect: 'elementos',
+                                    labelRowsPerPage: 'Elementos por página',
+                                    firstTooltip: 'Primera página',
+                                    previousTooltip: 'Anterior',
+                                    nextTooltip: 'Siguiente',
+                                    lastTooltip: 'Última página'
+                                },
+                                toolbar: {
+                                    searchTooltip: 'Buscar',
+                                    searchPlaceholder: 'Buscar'
+                                }
+                            }
+                        }}
+                    />
                 </Layout>
-
-                <Toast style={{
-                        position: 'absolute',
-                        top: 80,
-                        right: 10,}}
-                    onClose={() => this.setState({showMessage: false})} show={this.state.showMessage} delay={5000} autohide>
-                    <Toast.Header>
-                        <strong className="mr-auto"></strong>
-                    </Toast.Header>
-                    <Toast.Body>{this.state.message}</Toast.Body>
-                </Toast>
-
-                <Fab color="primary" aria-label="add" style={{
-                        position: 'absolute',
-                        bottom: 15,
-                        right: 15,}} onClick={this.addSeguro}>
-                    <AddIcon />
-                </Fab>
-
             </div>
         )
     }

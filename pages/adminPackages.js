@@ -21,7 +21,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import AdminNavigation from './components/AdminNavigation';
 import Layout from './components/FullLayout';
 import SchedBuilder from './components/schedBuilder';
-import SnackbarAlert from './components/SnackbarAlert'
+import SnackbarAlert from './components/SnackbarAlert';
 
 //Others
 import AddIcon from '@material-ui/icons/Add';
@@ -51,9 +51,9 @@ var firebase;
 
 class AdminPackages extends Component {
 
-    constructor ()
+    constructor (props)
     {
-        super();
+        super(props);
 
         //inicializa state
         this.state = {
@@ -96,11 +96,11 @@ class AdminPackages extends Component {
                 },
                 { title: 'Nombre', field: 'name' },
                 { title: 'Descripción', field: 'descrip' },
-                { title: 'Tipo de ruta', field: 'type', lookup: { cientifico: 'Cientifico', cultural: 'Cultural', educativo: 'Educativo', recreativo: 'Recreativo' }, initialEditValue: 'cientifico' },
+                { title: 'Ruta', field: 'type', lookup: { cientifico: 'Cientifico', cultural: 'Cultural', educativo: 'Educativo', recreativo: 'Recreativo' }, initialEditValue: 'cientifico' },
                 { title: 'Desayuno', field: 'breakfast', type: 'boolean' },
                 { title: 'Almuerzo', field: 'lunch', type: 'boolean' },
                 { title: 'Cafe', field: 'coffe', type: 'boolean' },
-                { title: 'Capacidad', field: 'capacity', type: 'numeric' },
+                { title: 'Cupo', field: 'capacity', type: 'numeric' },
                 { title: 'Precio', field: 'price', type: 'numeric'  }
             ]
         };
@@ -952,7 +952,8 @@ class AdminPackages extends Component {
                             actionsColumnIndex: -1,
                             headerStyle: {
                                 paddingLeft: '5px',
-                                paddingRight: '5px'
+                                paddingRight: '5px',
+                                backgroundColor: '#0fb4f0'
                             },
                             filtering: false,
                             padding: 'dense',

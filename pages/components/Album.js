@@ -79,7 +79,7 @@ class Album extends React.Component {
 
     render () {
         return (
-            <div className="col-9 mx-auto" style={{ display: "block", minHeight: "1px", overflow: "auto"}}>
+            <div className="col-12 mx-auto" style={{ display: "block", minHeight: "1px", overflow: "auto"}}>
                 <Gallery images={this.state.images} onSelectImage={this.onSelectImage} showLightboxThumbnails={true}/>
             </div>
         );
@@ -90,45 +90,45 @@ class Album extends React.Component {
 Album.defaultProps = {
     images: [
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/a.jpg"),
+            thumbnail: require("../resources/a.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/d.jpg"),
+            thumbnail: require("../resources/d.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/c.jpg"),
+            thumbnail: require("../resources/c.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/b.jpg"),
+            thumbnail: require("../resources/b.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/e.jpg"),
+            thumbnail: require("../resources/e.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         },
         {
-            src: require("../resources/logo.png"),
-            thumbnail: require("../resources/logo.png"),
-            thumbnailWidth: "10%",
-            thumbnailHeight: "10%",
+            src: require("../resources/f.jpg"),
+            thumbnail: require("../resources/f.jpg"),
+            thumbnailWidth: 12,
+            thumbnailHeight: 10,
             caption: "After Rain (Jeshu John - designerspics.com)"
         }
     ]
